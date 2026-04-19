@@ -40,3 +40,16 @@ if(mobileBtn) {
         }
     });
 }
+const mobileBtn = document.getElementById('mobileMenuBtn');
+const nav = document.querySelector('.nav');
+if(mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+    // Закрывать меню при клике на ссылку
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+    });
+}
