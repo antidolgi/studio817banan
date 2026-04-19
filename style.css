@@ -347,6 +347,26 @@ body {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
 }
+.banan-hero {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffe6b3 100%);
+    padding: 100px 0;
+    text-align: center;
+    animation: bgPulse 10s ease infinite;
+}
+@keyframes bgPulse {
+    0% { background: #fff9e6; }
+    50% { background: #ffe6b3; }
+    100% { background: #fff9e6; }
+}
+.banan-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.banan-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
 
 /* ----- CTA (призыв) ----- */
 .cta {
