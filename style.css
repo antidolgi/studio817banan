@@ -1,3 +1,17 @@
+/* Подключение шрифтов (добавь в самое начало style.css) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+h1, h2, h3, .logo__text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+.hero__title, .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+}
 /* ----- RESET & БАЗА ----- */
 * {
     margin: 0;
@@ -45,27 +59,23 @@ body {
 }
 
 .btn-primary {
-    background-color: #f1c40f;
-    color: #1a1a1a;
-    box-shadow: 0 4px 12px rgba(241, 196, 15, 0.3);
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    border: none;
+    box-shadow: 0 8px 20px rgba(241,196,15,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .btn-primary:hover {
-    background-color: #e6b800;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(241, 196, 15, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(241,196,15,0.5);
 }
-
 .btn-outline {
+    border: 2px solid #f1c40f;
     background: transparent;
-    border-color: #1a1a1a;
-    color: #1a1a1a;
+    color: #1e2a41;
 }
-
 .btn-outline:hover {
-    background: #1a1a1a;
-    color: white;
-    transform: translateY(-2px);
+    background: #f1c40f20;
+    transform: translateY(-3px);
 }
 
 .link-arrow {
@@ -317,6 +327,18 @@ body {
     text-align: center;
     margin-top: 40px;
 }
+.gradient-text {
+    background: linear-gradient(135deg, #f1c40f, #e67e22, #f1c40f);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+}
+@keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
 
 /* ----- CTA (призыв) ----- */
 .cta {
@@ -417,4 +439,53 @@ body {
 @media (max-width: 480px) {
     .container { padding: 0 16px; }
     .btn { padding: 10px 20px; }
+}
+/* Исправление навигации */
+.nav {
+    display: flex;
+    flex-wrap: nowrap; /* запрещаем перенос */
+    overflow-x: auto;   /* добавляем скролл, если не влезает */
+    gap: 20px;
+    padding-bottom: 5px; /* чтобы скролл не обрезал тени */
+    scrollbar-width: thin; /* аккуратный скролл в Firefox */
+}
+.nav::-webkit-scrollbar {
+    height: 4px;
+}
+/* Для мобильных кнопка гамбургер уже есть, но скроем навигацию */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    .nav.active {
+        display: flex;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .services-grid, .directions__grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .gallery-teaser__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hero__title {
+        font-size: 2.2rem;
+    }
+    .cta__buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 }
