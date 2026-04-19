@@ -1,0 +1,18 @@
+studio817/
+├── index.html
+├── studio.html
+├── banan.html
+├── portfolio.html
+├── contacts.html
+├── style.css
+├── script.js
+├── robots.txt
+├── sitemap.xml
+├── video/
+│   └── obzor.mp4          (твой файл, переименуй и положи сюда)
+├── images/
+│   ├── logo.png           (твой логотип, красный шрифт с кругом)
+│   ├── hero-poster.jpg    (кадр из видео для предзагрузки)
+│   ├── about-photo.jpg    (фото для блока «О нас»)
+│   ├── gallery/           (сюда 6–10 фото студии, назови studio-1.jpg, studio-2.jpg ...)
+│   └── portfolio/         (скриншоты сайтов: kommunal-s.jpg, bio-ecopro.jpg, zabor.jpg, eurolos35green.jpg, antidolgi24.jpg)
