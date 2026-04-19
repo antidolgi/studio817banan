@@ -19,30 +19,10 @@ document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item,
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// Мобильное меню
-const mobileBtn = document.getElementById('mobileMenuBtn');
-if(mobileBtn) {
-    mobileBtn.addEventListener('click', () => {
-        const nav = document.querySelector('.nav');
-        if(nav.style.display === 'flex') {
-            nav.style.display = 'none';
-        } else {
-            nav.style.display = 'flex';
-            nav.style.flexDirection = 'column';
-            nav.style.position = 'absolute';
-            nav.style.top = '80px';
-            nav.style.left = '0';
-            nav.style.width = '100%';
-            nav.style.backgroundColor = 'white';
-            nav.style.padding = '20px';
-            nav.style.gap = '16px';
-            nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-        }
-    });
-}
+// Мобильное мену (единый правильный обработчик)
 const mobileBtn = document.getElementById('mobileMenuBtn');
 const nav = document.querySelector('.nav');
-if(mobileBtn) {
+if(mobileBtn && nav) {
     mobileBtn.addEventListener('click', () => {
         nav.classList.toggle('active');
     });
