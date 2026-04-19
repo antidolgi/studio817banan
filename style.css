@@ -531,3 +531,42 @@ body {
         align-items: center;
     }
 }
+/* Стили для карточек портфолио (кейсов) */
+.portfolio-card {
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.portfolio-card__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.portfolio-card__content {
+    padding: 24px;
+}
+.portfolio-card__content h4 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+.portfolio-card__content p {
+    margin-bottom: 8px;
+    color: #444;
+    line-height: 1.5;
+}
+.portfolio-card__link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #f1c40f;
+    font-weight: 600;
+    text-decoration: none;
+}
+.portfolio-card__link:hover {
+    text-decoration: underline;
+}
