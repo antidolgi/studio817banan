@@ -298,6 +298,14 @@ body {
     margin-bottom: 24px;
     color: #555;
 }
+.direction-card--photo {
+    background: #fff0f0;  /* нежно-розовый */
+    border-left: 6px solid #ff6b6b;
+}
+.direction-card--it {
+    background: #fff9e6;  /* светло-жёлтый */
+    border-left: 6px solid #f1c40f;
+}
 
 /* ----- ГАЛЕРЕЯ-ТИЗЕР ----- */
 .gallery-teaser__grid {
