@@ -7,7 +7,24 @@
 </head>
 <body>
 
-<header class="header">...</header> <!-- шапка -->
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="logo">
+                <img src="images/logo.png" alt="Студия 817" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="logo__text">Студия 817</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="studio.html">Фотостудия</a>
+                <a href="banan.html">Банановое агентство</a>
+                <a href="portfolio.html" class="active">Портфолио</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </div>
+</header>
 
 <main>
     <section class="section">
