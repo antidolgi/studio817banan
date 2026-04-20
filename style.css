@@ -63,6 +63,12 @@ body {
     border: none;
     box-shadow: 0 8px 20px rgba(241,196,15,0.4);
     transition: transform 0.2s, box-shadow 0.2s;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(241,196,15,0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(241,196,15,0); }
+    100% { box-shadow: 0 0 0 0 rgba(241,196,15,0); }
 }
 .btn-primary:hover {
     transform: translateY(-3px);
