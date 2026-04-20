@@ -206,5 +206,23 @@
         });
     }
 </script>
+  <div id="floatingForm" class="floating-form-popup">
+    <span class="close-form">&times;</span>
+    <h4>Оставить заявку</h4>
+    <form id="mainFloatingForm">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <select name="service" required>
+            <option value="">Выберите направление</option>
+            <option value="studio">Фотостудия (бронь/съёмка)</option>
+            <option value="banan">Банановое агентство (сайты, SEO)</option>
+        </select>
+        <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
+        <label class="checkbox-label">
+            <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+        </label>
+        <button type="submit">Отправить</button>
+    </form>
+</div>  
 </body>
 </html>
