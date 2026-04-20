@@ -41,6 +41,30 @@
                     <p><a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a></p>
                     <h3>📍 Адрес</h3>
                     <p>г. Вологда, ул. Чернышевского, 120Г</p>
+                    <div id="yandex-map" style="width: 100%; height: 400px; margin-top: 30px; border-radius: 24px;"></div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_КЛЮЧ&lang=ru_RU"></script>
+<script>
+    ymaps.ready(init);
+    function init() {
+        // Координаты студии: ул. Чернышевского, 120Г, Вологда
+        var studioCoords = [59.246105, 39.897945]; // Уточни координаты!
+        
+        var myMap = new ymaps.Map("yandex-map", {
+            center: studioCoords,  // ← теперь карта сразу загрузится с центром на студии
+            zoom: 17,
+            controls: ['zoomControl', 'fullscreenControl']
+        });
+        
+        var myPlacemark = new ymaps.Placemark(studioCoords, {
+            hintContent: 'Студия 817',
+            balloonContent: '<b>Студия 817</b><br>г. Вологда, ул. Чернышевского, 120Г'
+        });
+        
+        myMap.geoObjects.add(myPlacemark);
+        myMap.setCenter(studioCoords); // Дополнительная страховка
+    }
+</script>
                 </div>
                 <div>
                     <h3>Напишите нам</h3>
@@ -75,25 +99,7 @@
             </div>
             <div style="margin-top: 30px;">
 </div>
-<!-- ВСТАВЬ ЭТОТ БЛОК ВМЕСТО СТАРОЙ КАРТЫ -->
-<div id="yandex-map" style="width: 100%; height: 400px; margin-top: 30px; border-radius: 24px;"></div>
-
-<script src="https://api-maps.yandex.ru/2.1/?apikey=d05b2750-9675-46ac-bf94-90d4fcac0859&lang=ru_RU"></script>
-<script>
-    ymaps.ready(init);
-    function init() {
-        var myMap = new ymaps.Map("yandex-map", {
-            center: [59.220123, 39.888123], // координаты Вологды, ул. Чернышевского 120Г (примерные, ты можешь уточнить)
-            zoom: 17,
-            controls: ['zoomControl', 'fullscreenControl']
-        });
-        var myPlacemark = new ymaps.Placemark([59.246105, 39.897945], {
-            hintContent: 'Студия 817',
-            balloonContent: 'г. Вологда, ул. Чернышевского, 120Г'
-        });
-        myMap.geoObjects.add(myPlacemark);
-    }
-</script>            
+         
             <div class="footer__col">
                 <h4>Соцсети</h4>
                 <a href="https://vk.com/studio817" target="_blank">VK</a>
