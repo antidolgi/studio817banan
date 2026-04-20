@@ -9,6 +9,29 @@ const animateOnScroll = () => {
         }
     });
 };
+// Анимация счётчиков при появлении
+const statNumbers = document.querySelectorAll('.stat-number');
+const animateNumbers = () => {
+    statNumbers.forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        if(!el.classList.contains('animated') && el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add('animated');
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if(current >= target) {
+                    el.innerText = target;
+                    clearInterval(timer);
+                } else {
+                    el.innerText = Math.floor(current);
+                }
+            }, 20);
+        }
+    });
+};
+window.addEventListener('scroll', animateNumbers);
+window.addEventListener('load', animateNumbers);
 
 // Изначально скрываем элементы
 document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item, .cta__inner, .service-card, .advantage, .portfolio-card').forEach(el => {
