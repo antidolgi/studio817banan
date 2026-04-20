@@ -244,6 +244,17 @@ body {
 .about__image img:hover {
     transform: scale(1.02);
 }
+/* ----- стиль счетчиков ----- */
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #f1c40f;
+    line-height: 1;
+}
+.stat-label {
+    font-size: 1rem;
+    color: #555;
+}
 
 /* ----- НАПРАВЛЕНИЯ (КАРТОЧКИ) ----- */
 .directions__grid {
