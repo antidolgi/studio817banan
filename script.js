@@ -30,7 +30,7 @@ if (btn && formPopup) {
         this.action = actionUrl;
         this.submit();
     });
-}
+};
 // Анимация счётчиков при появлении
 const statNumbers = document.querySelectorAll('.stat-number');
 const animateNumbers = () => {
