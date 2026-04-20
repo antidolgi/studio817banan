@@ -216,11 +216,16 @@ body {
 }
 
 /* ----- О НАС ----- */
-.about__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
+.about {
+    background: url('images/studio-hero.jpg') no-repeat fixed center;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+.about .about__grid {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 32px;
 }
 
 .about__text h2 {
