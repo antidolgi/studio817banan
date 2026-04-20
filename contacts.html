@@ -74,17 +74,33 @@
                 <a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a>
             </div>
             <div style="margin-top: 30px;">
-    <h3>Как нас найти</h3>
-    <iframe src="https://yandex.ru/maps/-/CPCF4WIl" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
 </div>
-            
+<!-- ВСТАВЬ ЭТОТ БЛОК ВМЕСТО СТАРОЙ КАРТЫ -->
+<div id="yandex-map" style="width: 100%; height: 400px; margin-top: 30px; border-radius: 24px;"></div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=d05b2750-9675-46ac-bf94-90d4fcac0859&lang=ru_RU"></script>
+<script>
+    ymaps.ready(init);
+    function init() {
+        var myMap = new ymaps.Map("yandex-map", {
+            center: [59.220123, 39.888123], // координаты Вологды, ул. Чернышевского 120Г (примерные, ты можешь уточнить)
+            zoom: 17,
+            controls: ['zoomControl', 'fullscreenControl']
+        });
+        var myPlacemark = new ymaps.Placemark([59.246105, 39.897945], {
+            hintContent: 'Студия 817',
+            balloonContent: 'г. Вологда, ул. Чернышевского, 120Г'
+        });
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>            
             <div class="footer__col">
                 <h4>Соцсети</h4>
                 <a href="https://vk.com/studio817" target="_blank">VK</a>
             </div>
         </div>
         <div class="footer__bottom">
-            <p>© 2025 Студия 817. Все права защищены.</p>
+            <p>© 2026 Студия 817. Все права защищены.</p>
         </div>
         <a href="https://yandex.ru/maps/-/CPCF4WIl" target="_blank">Схема проезда</a>
     </div>
