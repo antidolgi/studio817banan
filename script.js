@@ -9,6 +9,28 @@ const animateOnScroll = () => {
         }
     });
 };
+// Форма заявки
+const btn = document.getElementById('floatingButton');
+const formPopup = document.getElementById('floatingForm');
+const closeBtn = document.querySelector('.close-form');
+
+if (btn && formPopup) {
+    btn.addEventListener('click', () => formPopup.classList.toggle('active'));
+    if (closeBtn) closeBtn.addEventListener('click', () => formPopup.classList.remove('active'));
+    
+    const floatingForm = document.getElementById('mainFloatingForm');
+    floatingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const service = floatingForm.service.value;
+        let actionUrl = '';
+        if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
+        else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
+        else { alert('Выберите направление'); return; }
+        if (!floatingForm.agreement.checked) { alert('Подтвердите согласие'); return; }
+        this.action = actionUrl;
+        this.submit();
+    });
+}
 // Анимация счётчиков при появлении
 const statNumbers = document.querySelectorAll('.stat-number');
 const animateNumbers = () => {
