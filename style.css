@@ -592,3 +592,65 @@ body {
 .portfolio-card__link:hover {
     text-decoration: underline;
 }
+/* Плавающая кнопка и форма */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    color: #1e2a41;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+.floating-btn:hover {
+    transform: scale(1.05);
+}
+.floating-form-popup {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1002;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+.floating-form-popup.active {
+    display: flex;
+}
+.close-form {
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: -10px;
+}
+/* Поля формы */
+.floating-form-popup input, .floating-form-popup select, .floating-form-popup textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.floating-form-popup button {
+    background: #f1c40f;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.checkbox-label {
+    font-size: 12px;
+    margin-bottom: 12px;
+}
