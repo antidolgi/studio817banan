@@ -84,7 +84,7 @@
         <a href="https://antidolgi.github.io/eurolos35green/" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
     </div>
 </div>
-                <<div class="portfolio-card" data-category="site">
+                <div class="portfolio-card" data-category="site">
     <div class="portfolio-card__image">
         <img src="images/portfolio/antidolgi24.jpg" alt="АнтиДолги24">
     </div>
@@ -140,7 +140,7 @@
 <script src="script.js"></script>
 <script>
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const portfolioItems = document.querySelectorAll('.portfolio-card'); // важно: class="portfolio-card"
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
