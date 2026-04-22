@@ -708,3 +708,38 @@ body {
     position: relative;
     z-index: 2;
 }
+.floating-banana-link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    text-decoration: none;
+}
+.floating-banana {
+    font-size: 40px;
+    opacity: 0.6;
+    transition: transform 0.3s, opacity 0.3s;
+    animation: floatBanana 4s infinite ease-in-out;
+}
+.floating-banana-link:hover .floating-banana {
+    transform: scale(1.2);
+    opacity: 1;
+}
+.floating-banana-link::after {
+    content: "Заказать сайт";
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    background: #f1c40f;
+    color: #1e2a41;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.floating-banana-link:hover::after {
+    opacity: 1;
+}
