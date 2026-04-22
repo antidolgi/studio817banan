@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108687132', 'ym');
+
+    ym(108687132, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подарочный сертификат в фотостудию 817</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="logo">
+                <img src="images/logo.png" alt="Студия 817" class="logo__img">
+                <span class="logo__text">Студия 817</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Главная</a>
+                <a href="studio.html">Фотостудия</a>
+                <a href="banan.html">Банановое агентство</a>
+                <a href="portfolio.html">Портфолио</a>
+                <a href="blog.html" class="active">Блог</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </div>
+</header>
+<main class="container section">
+    <h1>Подарочный сертификат в фотостудию 817</h1>
+    <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
+        <div style="flex: 1;">
+            <img src="images/sertificat.jpg" alt="Образец сертификата" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        </div>
+        <div style="flex: 1;">
+            <h2>Идеальный подарок для творческого человека</h2>
+            <p>Подарите близкому часы вдохновения в нашей просторной студии с панорамными окнами и профессиональным светом.</p>
+            <ul>
+                <li>Сертификат на 1 час съёмки (будни/выходные)</li>
+                <li>Можно добавить услуги фотографа и визажиста</li>
+                <li>Срок действия — 12 месяцев</li>
+                <li>Именной дизайн по вашему желанию</li>
+            </ul>
+            <p><strong>Стоимость:</strong> от 2000 ₽</p>
+            <button onclick="document.getElementById('floatingButton').click();" class="btn btn-primary">Заказать сертификат</button>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__col">
+                <div class="footer__logo">Студия 817</div>
+                <p>Фотостудия и IT-агентство в Вологде</p>
+            </div>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <a href="tel:+79114480830">+7-911-448-08-30 (студия)</a>
+                <a href="tel:+79957886668">+7-995-788-66-68 (IT)</a>
+                <a href="mailto:pstudio817@yandex.ru">pstudio817@yandex.ru</a>
+                <a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a>
+            </div>
+            <div class="footer__col">
+                <h4>Соцсети</h4>
+                <a href="https://vk.com/studio817" target="_blank">VK</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 Студия 817. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+  <div id="floatingForm" class="floating-form-popup">
+    <span class="close-form">&times;</span>
+    <h4>Оставить заявку</h4>
+    <form id="mainFloatingForm">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <select name="service" required>
+            <option value="">Выберите направление</option>
+            <option value="studio">Фотостудия (бронь/сертификат)</option>
+            <option value="banan">Банановое агентство (сайты, SEO)</option>
+        </select>
+        <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
+        
+        <!-- КАПЧА -->
+        <div class="captcha" style="margin: 10px 0;">
+            <label>Сколько будет 2 + 3? (цифрой)</label>
+            <input type="text" name="captcha" required>
+        </div>
+        
+        <label class="checkbox-label">
+            <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+        </label>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+</body>
+</html>
