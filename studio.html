@@ -167,7 +167,6 @@
                 <a href="https://vk.com/write-20899239?text=Здравствуйте! Хочу забронировать студию. Интересует дата: (укажите), время: (укажите)." target="_blank" class="btn btn-outline">📅 Забронировать через VK</a>
                 <a href="https://vk.com/studio817" target="_blank" class="btn btn-outline">💬 Написать в VK</a>
             </div>
-            <div id="floatingButton" class="floating-btn">Оставить заявку</div>
         </div>
     </section>
 </main>
@@ -228,5 +227,33 @@
         });
     }
 </script>
+    <!-- Плавающая кнопка и форма -->
+<div id="floatingButton" class="floating-btn">Оставить заявку</div>
+
+<div id="floatingForm" class="floating-form-popup">
+    <span class="close-form">&times;</span>
+    <h4>Оставить заявку</h4>
+    <form id="mainFloatingForm">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <select name="service" required>
+            <option value="">Выберите направление</option>
+            <option value="studio">Фотостудия (бронь/съёмка)</option>
+            <option value="banan">Банановое агентство (сайты, SEO)</option>
+        </select>
+        <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
+        
+        <!-- КАПЧА -->
+        <div class="captcha" style="margin: 10px 0;">
+            <label>Сколько будет 2 + 3? (цифрой)</label>
+            <input type="text" name="captcha" required>
+        </div>
+        
+        <label class="checkbox-label">
+            <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+        </label>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
 </body>
 </html>
