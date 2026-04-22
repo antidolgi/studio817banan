@@ -676,3 +676,35 @@ body {
     50% { transform: translateY(-20px) rotate(10deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
+.banan-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+}
+.banan-hero__video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.banan-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.banan-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.banan-hero .container {
+    position: relative;
+    z-index: 2;
+}
