@@ -9,27 +9,44 @@ const animateOnScroll = () => {
         }
     });
 };
-// Форма заявки
-const btn = document.getElementById('floatingButton');
-const formPopup = document.getElementById('floatingForm');
-const closeBtn = document.querySelector('.close-form');
+// Плавающая форма
+const floatingBtn = document.getElementById('floatingButton');
+const floatingFormPopup = document.getElementById('floatingForm');
+const closeFloatingForm = document.querySelector('.close-form');
 
-if (btn && formPopup) {
-    btn.addEventListener('click', () => formPopup.classList.toggle('active'));
-    if (closeBtn) closeBtn.addEventListener('click', () => formPopup.classList.remove('active'));
-    
-    const floatingForm = document.getElementById('mainFloatingForm');
-    floatingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const service = floatingForm.service.value;
-        let actionUrl = '';
-        if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
-        else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
-        else { alert('Выберите направление'); return; }
-        if (!floatingForm.agreement.checked) { alert('Подтвердите согласие'); return; }
-        this.action = actionUrl;
-        this.submit();
+if(floatingBtn && floatingFormPopup) {
+    floatingBtn.addEventListener('click', () => {
+        floatingFormPopup.classList.toggle('active');
     });
+    if(closeFloatingForm) {
+        closeFloatingForm.addEventListener('click', () => {
+            floatingFormPopup.classList.remove('active');
+        });
+    }
+    // Обработка отправки
+    const mainForm = document.getElementById('mainFloatingForm');
+    if(mainForm) {
+        mainForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const service = this.service.value;
+            let actionUrl = '';
+            if(service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
+            else if(service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
+            else { alert('Выберите направление'); return; }
+            
+            // Проверка капчи
+            const captchaValue = this.captcha.value.trim();
+            if(captchaValue !== '5') {  // так как 2+3=5
+                alert('Неверный ответ на капчу');
+                return;
+            }
+            if(!this.agreement.checked) {
+                alert('Подтвердите согласие на обработку персональных данных');
+                return;
+            }
+            this.action = actionUrl;
+            this.submit();
+        });
 };
 // Анимация счётчиков при появлении
 const statNumbers = document.querySelectorAll('.stat-number');
