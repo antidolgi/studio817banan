@@ -115,21 +115,7 @@ if(mobileBtn && nav) {
         });
     });
 }
-// Добавить крестик в мобильное меню, если его нет
-if(mobileBtn && nav) {
-    // Проверяем, есть ли уже кнопка закрытия
-    if(!nav.querySelector('.close-menu-btn')) {
-        const closeMenuBtn = document.createElement('span');
-        closeMenuBtn.innerHTML = '✕';
-        closeMenuBtn.className = 'close-menu-btn';
-        closeMenuBtn.style.cssText = 'position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer;';
-        nav.style.position = 'relative';
-        nav.appendChild(closeMenuBtn);
-        closeMenuBtn.addEventListener('click', () => {
-            nav.classList.remove('active');
-        });
-    }
-}
+
 // Добавляем крестик закрытия в мобильное меню (только для активного состояния)
 const addCloseButtonToNav = () => {
     const navMenu = document.querySelector('.nav');
@@ -162,4 +148,3 @@ const addCloseButtonToNav = () => {
     }
 };
 addCloseButtonToNav();
-}
