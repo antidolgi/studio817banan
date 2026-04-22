@@ -223,25 +223,23 @@ body {
 
 /* ----- О НАС ----- */
 .about {
-    background: url('images/studio-hero.jpg') no-repeat fixed center;
-    background-size: cover;
-    position: relative;
-    color: white;
+    background: #ffffff; /* чистый белый фон, без картинки */
 }
+
 .about .about__grid {
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 32px;
+    background: transparent; /* убираем тёмную подложку */
+    padding: 0;
 }
 
 .about__text h2 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #1a1a1a; /* чёрный заголовок */
 }
 
 .about__text p {
     margin-bottom: 16px;
-    color: #444;
+    color: #444; /* тёмно-серый на белом фоне — читаемо */
     font-size: 1.05rem;
 }
 
