@@ -376,6 +376,48 @@ body {
     50% { background: #ffe6b3; }
     100% { background: #fff9e6; }
 }
+/* Hero для бананового агентства с видео */
+.banan-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banan-hero__video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.banan-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* видео заполняет контейнер, сохраняя пропорции */
+}
+.banan-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+.banan-hero .container {
+    position: relative;
+    z-index: 2;
+}
+/* Запасной фон, если видео не загрузится */
+.banan-hero {
+    background: linear-gradient(135deg, #f1c40f, #e67e22);
+}
 .banan-hero h1 {
     font-size: 3rem;
     margin-bottom: 20px;
