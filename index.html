@@ -237,10 +237,11 @@
         });
     }
 </script>
-    <!-- Плавающая кнопка и форма -->
+   <!-- Плавающая кнопка -->
 <div id="floatingButton" class="floating-btn">Оставить заявку</div>
 
-<div id="floatingForm" class="floating-form-popup">
+<!-- Плавающая форма -->
+<div id="floatingForm" class="floating-form-popup" style="display: none;">
     <span class="close-form">&times;</span>
     <h4>Оставить заявку</h4>
     <form id="mainFloatingForm">
@@ -252,20 +253,16 @@
             <option value="banan">Банановое агентство (сайты, SEO)</option>
         </select>
         <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
-        
-        <!-- КАПЧА -->
         <div class="captcha" style="margin: 10px 0;">
             <label>Сколько будет 2 + 3? (цифрой)</label>
             <input type="text" name="captcha" required>
         </div>
-        
         <label class="checkbox-label">
             <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
         </label>
         <button type="submit">Отправить</button>
     </form>
-</div>
-    <a href="banan.html" class="floating-banana-link">
+</div>    <a href="banan.html" class="floating-banana-link">
     <div class="floating-banana">🍌</div>
 </a>
 </body>
