@@ -141,18 +141,15 @@
     </div>
 </section>
 
-    <section class="section cta">
-        <div class="container">
-            <div class="cta__inner" style="text-align: center;">
-                <h2>Нужен сайт или продвижение?</h2>
-                <p>Позвоните или напишите в VK — обсудим ваш проект</p>
-                <div class="cta__buttons" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:+79957886668" class="btn btn-primary">📞 Позвонить</a>
-                    <a href="https://vk.com/write-20899239?text=Здравствуйте! Нужна консультация по созданию сайта / продвижению." target="_blank" class="btn btn-outline">💬 Написать в VK</a>
-                </div>
-            </div>
+   <section class="section cta">
+    <div class="container">
+        <div class="cta__inner">
+            <h2>Нужен сайт или продвижение?</h2>
+            <p>Нажмите на кнопку «Оставить заявку» в правом нижнем углу</p>
+            <button onclick="document.getElementById('floatingButton').click();" class="btn btn-primary">Открыть форму</button>
         </div>
-    </section>
+    </div>
+</section>
 </main>
 
 <footer class="footer">
@@ -167,5 +164,33 @@
 </footer>
 
 <script src="script.js"></script>
+    <!-- Плавающая кнопка и форма -->
+<div id="floatingButton" class="floating-btn">Оставить заявку</div>
+
+<div id="floatingForm" class="floating-form-popup">
+    <span class="close-form">&times;</span>
+    <h4>Оставить заявку</h4>
+    <form id="mainFloatingForm">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <select name="service" required>
+            <option value="">Выберите направление</option>
+            <option value="studio">Фотостудия (бронь/съёмка)</option>
+            <option value="banan">Банановое агентство (сайты, SEO)</option>
+        </select>
+        <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
+        
+        <!-- КАПЧА -->
+        <div class="captcha" style="margin: 10px 0;">
+            <label>Сколько будет 2 + 3? (цифрой)</label>
+            <input type="text" name="captcha" required>
+        </div>
+        
+        <label class="checkbox-label">
+            <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+        </label>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
 </body>
 </html>
