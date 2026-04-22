@@ -243,16 +243,19 @@ body {
     font-size: 1.05rem;
 }
 
+.about__image {
+    text-align: center;
+}
 .about__image img {
-    width: 100%;
-    max-width: 400px;
+    width: 25%;          /* уменьшаем в 4 раза от родительской ширины */
+    max-width: 200px;    /* ограничиваем максимум, чтобы не расплывалась */
+    min-width: 120px;    /* чтобы на телефоне не стала слишком маленькой */
     border-radius: 24px;
     box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
     transition: transform 0.4s;
 }
-
 .about__image img:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 /* ----- стиль счетчиков ----- */
 .stat-number {
@@ -647,74 +650,23 @@ body {
     font-size: 12px;
     margin-bottom: 12px;
 }
-/* Плавающие бананы */
-.floating-banana {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    font-size: 40px;
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 999;
-    animation: floatBanana 12s infinite ease-in-out;
-}
-.floating-banana:nth-child(2) {
-    bottom: 80px;
-    left: auto;
-    right: 30px;
-    animation-duration: 15s;
-    animation-delay: 2s;
-    font-size: 30px;
-}
-@keyframes floatBanana {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-.banan-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 100px 0;
-    text-align: center;
-    color: white;
-}
-.banan-hero__video-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-.banan-hero__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.banan-hero__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-}
-.banan-hero .container {
-    position: relative;
-    z-index: 2;
-}
+/* Переопределяем стили для кликабельного банана */
 .floating-banana-link {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    z-index: 999;
+    z-index: 1003;
     text-decoration: none;
+    display: block;
+    cursor: pointer;
 }
-.floating-banana {
-    font-size: 40px;
-    opacity: 0.6;
-    transition: transform 0.3s, opacity 0.3s;
+.floating-banana-link .floating-banana {
+    font-size: 44px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
     animation: floatBanana 4s infinite ease-in-out;
+    display: inline-block;
+    pointer-events: auto; /* явно разрешаем клик */
 }
 .floating-banana-link:hover .floating-banana {
     transform: scale(1.2);
@@ -727,9 +679,10 @@ body {
     left: 0;
     background: #f1c40f;
     color: #1e2a41;
-    padding: 5px 10px;
-    border-radius: 20px;
+    padding: 5px 12px;
+    border-radius: 30px;
     font-size: 12px;
+    font-weight: bold;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s;
