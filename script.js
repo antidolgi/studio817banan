@@ -43,26 +43,58 @@ if (serviceSelect && messageField) {
     const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const service = this.service.value;
-            let actionUrl = '';
-            if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
-            else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
-            else { alert('Выберите направление'); return; }
-            
-            const captchaValue = this.captcha.value.trim();
-            if (captchaValue !== '5') {
-                alert('Неверный ответ на капчу');
-                return;
-            }
-            if (!this.agreement.checked) {
-                alert('Подтвердите согласие на обработку персональных данных');
-                return;
-            }
-            this.action = actionUrl;
-            this.submit();
-        });
+    e.preventDefault();
+    const service = this.service.value;
+    let actionUrl = '';
+    if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
+    else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
+    else { alert('Выберите направление'); return; }
+    
+    const captchaValue = this.captcha.value.trim();
+    if (captchaValue !== '5') {
+        alert('Неверный ответ на капчу');
+        return;
     }
+    if (!this.agreement.checked) {
+        alert('Подтвердите согласие на обработку персональных данных');
+        return;
+    }
+
+    // Показываем спиннер и отправляем через fetch
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = 'Отправка...';
+    submitBtn.disabled = true;
+
+    fetch(actionUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            name: this.name.value,
+            phone: this.phone.value,
+            service: service,
+            message: this.message.value
+        })
+    }).then(() => {
+        // Успешно
+        showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
+        this.reset();
+        floatingFormPopup.style.display = 'none';
+    }).catch(() => {
+        showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону.+7-995-788-666-8', 'error');
+    }).finally(() => {
+        submitBtn.innerText = originalText;
+        submitBtn.disabled = false;
+    });
+});
+
+function showNotification(text, type = 'success') {
+    const notif = document.createElement('div');
+    notif.innerText = text;
+    notif.style.cssText = `position: fixed; bottom: 20px; left: 20px; background: ${type === 'success' ? '#4caf50' : '#f44336'}; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: bold;`;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 5000);
+}
 
     // Автоматическое появление формы через 10 секунд (только если не открыта)
     setTimeout(function() {
@@ -75,7 +107,7 @@ if (serviceSelect && messageField) {
                 }
             }, 7000);
         }
-    }, 10000);
+    }, 20000);
 });
 
 // Анимация счётчиков и появления элементов (оставляем как есть, но обернём для надёжности)
