@@ -645,7 +645,7 @@ body {
     padding: 12px 24px;
     border-radius: 50px;
     cursor: pointer;
-    z-index: 1005;
+    z-index: 10000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: transform 0.2s;
 }
@@ -660,7 +660,7 @@ body {
     background: white;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    z-index: 1005;
+    z-index: 10000;
     display: none;
     flex-direction: column;
     padding: 20px;
