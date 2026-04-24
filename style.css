@@ -645,7 +645,7 @@ body {
     padding: 12px 24px;
     border-radius: 50px;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1002;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: transform 0.2s;
 }
