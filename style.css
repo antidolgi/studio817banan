@@ -432,9 +432,9 @@ body {
 
 /* ----- CTA (призыв) ----- */
 .cta {
-    background: linear-gradient(135deg, #f1c40f10, #ffffff);
+   background: linear-gradient(135deg, #f1c40f20, #ffffff);
     border-radius: 48px;
-    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .cta__inner {
@@ -791,10 +791,14 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    background: linear-gradient(135deg, #fff9e6, #fff0d0);
+    padding: 30px;
+    border-radius: 48px;
 }
 @media (max-width: 768px) {
     .advantages-grid {
-        display: none; /* скрываем на телефонах */
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
     }
 }
 .feature-card {
@@ -827,4 +831,20 @@ body {
     background: linear-gradient(135deg, #fff0f0, #ffe0e0);
     padding: 30px;
     border-radius: 48px;
+}
+.studio-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+.feature-card {
+    background: white;
+    padding: 25px;
+    border-radius: 28px;
+    text-align: center;
+    transition: 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
 }
