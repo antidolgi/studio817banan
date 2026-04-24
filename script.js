@@ -1,44 +1,41 @@
-// ========== ПЛАВАЮЩАЯ ФОРМА (РАБОТАЕТ ГАРАНТИРОВАННО) ==========
+// ========== УПРОЩЁННЫЙ И НАДЁЖНЫЙ СКРИПТ ==========
 document.addEventListener('DOMContentLoaded', function() {
+    // 1. Плавающая форма
     const btn = document.getElementById('floatingButton');
-    const formPopup = document.getElementById('floatingForm');
-    const closeBtn = document.querySelector('.close-form');
+    const form = document.getElementById('floatingForm');
+    const closeSpan = document.querySelector('#floatingForm .close-form');
 
-    if (btn && formPopup) {
-        // Открыть форму
+    if (btn && form) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            formPopup.style.display = 'flex';
+            form.style.display = 'flex';   // открываем форму
         });
-        // Закрыть по крестику
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                formPopup.style.display = 'none';
+        if (closeSpan) {
+            closeSpan.addEventListener('click', function() {
+                form.style.display = 'none';
             });
         }
-        // Закрыть при клике вне формы
+        // клик вне формы -> закрыть
         window.addEventListener('click', function(e) {
-            if (e.target === formPopup) {
-                formPopup.style.display = 'none';
-            }
+            if (e.target === form) form.style.display = 'none';
         });
     }
 
-    // Умное переключение текста в поле message
+    // 2. Умный placeholder (меняется при выборе услуги)
     const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
-    const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
-    if (serviceSelect && messageField) {
+    const msgField = document.querySelector('#mainFloatingForm textarea[name="message"]');
+    if (serviceSelect && msgField) {
         serviceSelect.addEventListener('change', function() {
             if (this.value === 'banan') {
-                messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
+                msgField.placeholder = 'Опишите задачу: какой сайт нужен, бюджет, сроки...';
             } else {
-                messageField.placeholder = 'Дата, время, пожелания по съёмке...';
+                msgField.placeholder = 'Дата, время, пожелания по съёмке...';
             }
         });
         serviceSelect.dispatchEvent(new Event('change'));
     }
 
-    // Отправка формы через fetch
+    // 3. Отправка формы (без ошибок)
     const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
@@ -68,11 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     message: this.message.value
                 })
             }).then(() => {
-                alert('✅ Заявка принята! Мы свяжемся с вами в ближайшее время.');
+                alert('✅ Заявка принята! Мы свяжемся с вами.');
                 this.reset();
-                formPopup.style.display = 'none';
+                form.style.display = 'none';   // правильно закрываем форму
             }).catch(() => {
-                alert('❌ Ошибка отправки. Пожалуйста, позвоните нам: +7-995-788-66-68');
+                alert('❌ Ошибка отправки. Позвоните: +7-995-788-66-68');
             }).finally(() => {
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
@@ -80,18 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Автоматическое появление формы через 20 секунд
+    // 4. Автопоказ через 20 секунд
     setTimeout(() => {
-        if (formPopup && formPopup.style.display !== 'flex') {
-            formPopup.style.display = 'flex';
+        if (form && form.style.display !== 'flex') {
+            form.style.display = 'flex';
             setTimeout(() => {
-                if (formPopup.style.display === 'flex') formPopup.style.display = 'none';
+                if (form.style.display === 'flex') form.style.display = 'none';
             }, 7000);
         }
     }, 20000);
 });
 
-// ========== АНИМАЦИИ (оставляем как есть) ==========
+// ========== ВСЕ АНИМАЦИИ (счётчики, появление, мобильное меню) ==========
 document.addEventListener('DOMContentLoaded', function() {
     // Счётчики
     const statNumbers = document.querySelectorAll('.stat-number');
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateNumbers);
     window.addEventListener('load', animateNumbers);
 
-    // Плавное появление
+    // Плавное появление блоков
     const elements = document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item, .cta__inner, .service-card, .advantage, .portfolio-card');
     elements.forEach(el => {
         el.style.opacity = '0';
