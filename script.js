@@ -1,39 +1,41 @@
 // Ждём полной загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
-    // Плавающая кнопка и форма
+    // Элементы формы
     const floatingBtn = document.getElementById('floatingButton');
     const floatingForm = document.getElementById('floatingForm');
     const closeFormBtn = document.querySelector('.close-form');
+    const mainForm = document.getElementById('mainFloatingForm');
 
-    // Умное переключение текста в зависимости от выбора услуги
-    const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
-    const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
-    if (serviceSelect && messageField) {
-        serviceSelect.addEventListener('change', function() {
-            if (this.value === 'banan') {
-                messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
-            } else {
-                messageField.placeholder = 'Дата, время, пожелания по съёмке...';
-            }
-        });
-        // Запускаем сразу, чтобы установить правильный placeholder
-        serviceSelect.dispatchEvent(new Event('change'));
+    // Умное переключение текста в поле message
+    if (mainForm) {
+        const serviceSelect = mainForm.querySelector('select[name="service"]');
+        const messageField = mainForm.querySelector('textarea[name="message"]');
+        if (serviceSelect && messageField) {
+            const updatePlaceholder = () => {
+                if (serviceSelect.value === 'banan') {
+                    messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
+                } else {
+                    messageField.placeholder = 'Дата, время, пожелания по съёмке...';
+                }
+            };
+            serviceSelect.addEventListener('change', updatePlaceholder);
+            updatePlaceholder();
+        }
     }
 
+    // Открытие/закрытие формы
     if (floatingBtn && floatingForm) {
-        // Открыть форму по клику
-        floatingBtn.addEventListener('click', function(e) {
+        floatingBtn.addEventListener('click', (e) => {
             e.preventDefault();
             floatingForm.style.display = 'flex';
         });
-        // Закрыть форму по крестику
         if (closeFormBtn) {
-            closeFormBtn.addEventListener('click', function() {
+            closeFormBtn.addEventListener('click', () => {
                 floatingForm.style.display = 'none';
             });
         }
-        // Закрыть форму при клике вне её (на фон)
-        window.addEventListener('click', function(e) {
+        // Закрытие по клику на фон (на само окно? лучше на оверлей, но пока так)
+        window.addEventListener('click', (e) => {
             if (e.target === floatingForm) {
                 floatingForm.style.display = 'none';
             }
@@ -41,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Обработка отправки формы
-    const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
             else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
             else { alert('Выберите направление'); return; }
-            
+
             const captchaValue = this.captcha.value.trim();
             if (captchaValue !== '5') {
                 alert('Неверный ответ на капчу');
@@ -79,9 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }).then(() => {
                 showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
                 this.reset();
-                floatingForm.style.display = 'none';  // ← исправлено (было floatingFormPopup)
+                floatingForm.style.display = 'none'; // исправлено: было floatingFormPopup
             }).catch(() => {
-                showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону +7-995-788-66-68', 'error');
+                showNotification('❌ Ошибка отправки. Попробуйте позвонить: +7-995-788-66-68', 'error');
             }).finally(() => {
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Функция уведомлений
     function showNotification(text, type = 'success') {
         const notif = document.createElement('div');
         notif.innerText = text;
@@ -97,20 +99,39 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => notif.remove(), 5000);
     }
 
-    // Автоматическое появление формы через 20 секунд (можно изменить)
-    setTimeout(function() {
-        if (floatingForm && floatingForm.style.display !== 'flex') {
+    // Автоматическое появление формы (один раз через 20 сек, потом через 60, если закрыли)
+    let autoShowTimer = null;
+    let formManuallyClosed = false;
+    const showFormAuto = () => {
+        if (!formManuallyClosed && floatingForm && floatingForm.style.display !== 'flex') {
             floatingForm.style.display = 'flex';
-            setTimeout(function() {
+            // Автоскрытие через 10 секунд, если не взаимодействовали
+            setTimeout(() => {
                 if (floatingForm.style.display === 'flex') {
                     floatingForm.style.display = 'none';
                 }
-            }, 7000);
+            }, 10000);
         }
+    };
+    // Первый показ через 20 секунд
+    autoShowTimer = setTimeout(() => {
+        showFormAuto();
+        // Последующие попытки – раз в 60 секунд
+        setInterval(() => {
+            if (!formManuallyClosed) showFormAuto();
+        }, 60000);
     }, 20000);
+
+    // Если пользователь закрыл форму вручную – сбрасываем флаг, но не блокируем повторный авто-показ?
+    // По логике, если закрыл, значит не хочет – больше не показываем.
+    if (closeFormBtn) {
+        closeFormBtn.addEventListener('click', () => {
+            formManuallyClosed = true;
+        });
+    }
 });
 
-// Анимация счётчиков и появления элементов
+// Анимация счётчиков и появления элементов (без изменений, только обёрнуто)
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
     const animateNumbers = () => {
@@ -136,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateNumbers);
     window.addEventListener('load', animateNumbers);
 
-    // Плавное появление элементов
     const elements = document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item, .cta__inner, .service-card, .advantage, .portfolio-card');
     elements.forEach(el => {
         el.style.opacity = '0';
