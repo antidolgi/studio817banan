@@ -4,6 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const floatingBtn = document.getElementById('floatingButton');
     const floatingForm = document.getElementById('floatingForm');
     const closeFormBtn = document.querySelector('.close-form');
+    // Умное переключение текста в зависимости от выбора услуги
+const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
+const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
+if (serviceSelect && messageField) {
+    serviceSelect.addEventListener('change', function() {
+        if (this.value === 'banan') {
+            messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
+        } else {
+            messageField.placeholder = 'Дата, время, пожелания по съёмке...';
+        }
+    });
+    // Запускаем сразу, чтобы установить правильный placeholder
+    serviceSelect.dispatchEvent(new Event('change'));
+}
 
     if (floatingBtn && floatingForm) {
         // Открыть форму по клику
