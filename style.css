@@ -795,3 +795,29 @@ body {
         display: none; /* скрываем на телефонах */
     }
 }
+.feature-card {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 28px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+.feature-card i {
+    font-size: 36px;
+    color: #f1c40f;
+    margin-bottom: 12px;
+    display: block;
+}
+.feature-card strong {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 6px;
+}
+.feature-card span {
+    color: #666;
+    font-size: 0.9rem;
+}
