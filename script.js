@@ -1,41 +1,46 @@
-// ========== УПРОЩЁННЫЙ И НАДЁЖНЫЙ СКРИПТ ==========
+// Ждём полной загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Плавающая форма
-    const btn = document.getElementById('floatingButton');
-    const form = document.getElementById('floatingForm');
-    const closeSpan = document.querySelector('#floatingForm .close-form');
+    // Плавающая кнопка и форма
+    const floatingBtn = document.getElementById('floatingButton');
+    const floatingForm = document.getElementById('floatingForm');
+    const closeFormBtn = document.querySelector('.close-form');
 
-    if (btn && form) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            form.style.display = 'flex';   // открываем форму
-        });
-        if (closeSpan) {
-            closeSpan.addEventListener('click', function() {
-                form.style.display = 'none';
-            });
-        }
-        // клик вне формы -> закрыть
-        window.addEventListener('click', function(e) {
-            if (e.target === form) form.style.display = 'none';
-        });
-    }
-
-    // 2. Умный placeholder (меняется при выборе услуги)
+    // Умное переключение текста в зависимости от выбора услуги
     const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
-    const msgField = document.querySelector('#mainFloatingForm textarea[name="message"]');
-    if (serviceSelect && msgField) {
+    const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
+    if (serviceSelect && messageField) {
         serviceSelect.addEventListener('change', function() {
             if (this.value === 'banan') {
-                msgField.placeholder = 'Опишите задачу: какой сайт нужен, бюджет, сроки...';
+                messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
             } else {
-                msgField.placeholder = 'Дата, время, пожелания по съёмке...';
+                messageField.placeholder = 'Дата, время, пожелания по съёмке...';
             }
         });
+        // Запускаем сразу, чтобы установить правильный placeholder
         serviceSelect.dispatchEvent(new Event('change'));
     }
 
-    // 3. Отправка формы (без ошибок)
+    if (floatingBtn && floatingForm) {
+        // Открыть форму по клику
+        floatingBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            floatingForm.style.display = 'flex';
+        });
+        // Закрыть форму по крестику
+        if (closeFormBtn) {
+            closeFormBtn.addEventListener('click', function() {
+                floatingForm.style.display = 'none';
+            });
+        }
+        // Закрыть форму при клике вне её (на фон)
+        window.addEventListener('click', function(e) {
+            if (e.target === floatingForm) {
+                floatingForm.style.display = 'none';
+            }
+        });
+    }
+
+    // Обработка отправки формы
     const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
@@ -46,10 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
             else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
             else { alert('Выберите направление'); return; }
             
-            const captcha = this.captcha.value.trim();
-            if (captcha !== '5') { alert('Неверный ответ на капчу'); return; }
-            if (!this.agreement.checked) { alert('Подтвердите согласие'); return; }
+            const captchaValue = this.captcha.value.trim();
+            if (captchaValue !== '5') {
+                alert('Неверный ответ на капчу');
+                return;
+            }
+            if (!this.agreement.checked) {
+                alert('Подтвердите согласие на обработку персональных данных');
+                return;
+            }
 
+            // Показываем спиннер
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerText;
             submitBtn.innerText = 'Отправка...';
@@ -65,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     message: this.message.value
                 })
             }).then(() => {
-                alert('✅ Заявка принята! Мы свяжемся с вами.');
+                showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
                 this.reset();
-                form.style.display = 'none';   // правильно закрываем форму
+                floatingForm.style.display = 'none';  // ← исправлено (было floatingFormPopup)
             }).catch(() => {
-                alert('❌ Ошибка отправки. Позвоните: +7-995-788-66-68');
+                showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону +7-995-788-66-68', 'error');
             }).finally(() => {
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
@@ -77,20 +89,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. Автопоказ через 20 секунд
-    setTimeout(() => {
-        if (form && form.style.display !== 'flex') {
-            form.style.display = 'flex';
-            setTimeout(() => {
-                if (form.style.display === 'flex') form.style.display = 'none';
+    function showNotification(text, type = 'success') {
+        const notif = document.createElement('div');
+        notif.innerText = text;
+        notif.style.cssText = `position: fixed; bottom: 20px; left: 20px; background: ${type === 'success' ? '#4caf50' : '#f44336'}; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: bold;`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
+    }
+
+    // Автоматическое появление формы через 20 секунд (можно изменить)
+    setTimeout(function() {
+        if (floatingForm && floatingForm.style.display !== 'flex') {
+            floatingForm.style.display = 'flex';
+            setTimeout(function() {
+                if (floatingForm.style.display === 'flex') {
+                    floatingForm.style.display = 'none';
+                }
             }, 7000);
         }
     }, 20000);
 });
 
-// ========== ВСЕ АНИМАЦИИ (счётчики, появление, мобильное меню) ==========
+// Анимация счётчиков и появления элементов
 document.addEventListener('DOMContentLoaded', function() {
-    // Счётчики
     const statNumbers = document.querySelectorAll('.stat-number');
     const animateNumbers = () => {
         statNumbers.forEach(el => {
@@ -99,9 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!el.classList.contains('animated') && el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.classList.add('animated');
                 let current = 0;
-                const step = target / 50;
+                const increment = target / 50;
                 const timer = setInterval(() => {
-                    current += step;
+                    current += increment;
                     if (current >= target) {
                         el.innerText = target;
                         clearInterval(timer);
@@ -115,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateNumbers);
     window.addEventListener('load', animateNumbers);
 
-    // Плавное появление блоков
+    // Плавное появление элементов
     const elements = document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item, .cta__inner, .service-card, .advantage, .portfolio-card');
     elements.forEach(el => {
         el.style.opacity = '0';
@@ -124,7 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     const animateOnScroll = () => {
         elements.forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             }
@@ -137,9 +159,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const nav = document.querySelector('.nav');
     if (mobileBtn && nav) {
-        mobileBtn.addEventListener('click', () => nav.classList.toggle('active'));
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
         nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => nav.classList.remove('active'));
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
         });
     }
 });
