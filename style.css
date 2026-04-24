@@ -645,13 +645,14 @@ body {
     padding: 12px 24px;
     border-radius: 50px;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 1002;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: transform 0.2s;
 }
 .floating-btn:hover {
     transform: scale(1.05);
 }
+/* Плавающая форма (базовые стили) */
 .floating-form-popup {
     position: fixed;
     bottom: 90px;
@@ -661,13 +662,19 @@ body {
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     z-index: 10000;
-    display: none;
+    display: none;  /* скрыта по умолчанию */
     flex-direction: column;
     padding: 20px;
     font-family: 'Inter', sans-serif;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.9);
+    opacity: 0;
 }
+/* Активное состояние – показываем форму */
 .floating-form-popup.active {
     display: flex;
+    transform: scale(1);
+    opacity: 1;
 }
 .close-form {
     align-self: flex-end;
@@ -748,16 +755,8 @@ body {
     z-index: 1000;
     display: none;
 }
-.floating-form-popup {
-    z-index: 1005;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: scale(0.9);
-    opacity: 0;
-}
-.floating-form-popup.active {
-    transform: scale(1);
-    opacity: 1;
-}
+/* параллакс */
+
 .parallax-video {
     position: relative;
     overflow: hidden;
