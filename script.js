@@ -1,11 +1,30 @@
-// Ждём полной загрузки DOM
+// ========== ПЛАВАЮЩАЯ ФОРМА (РАБОТАЕТ ГАРАНТИРОВАННО) ==========
 document.addEventListener('DOMContentLoaded', function() {
-    // Плавающая кнопка и форма
-    const floatingBtn = document.getElementById('floatingButton');
-    const floatingForm = document.getElementById('floatingForm');
-    const closeFormBtn = document.querySelector('.close-form');
+    const btn = document.getElementById('floatingButton');
+    const formPopup = document.getElementById('floatingForm');
+    const closeBtn = document.querySelector('.close-form');
 
-    // Умное переключение текста в зависимости от выбора услуги
+    if (btn && formPopup) {
+        // Открыть форму
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            formPopup.style.display = 'flex';
+        });
+        // Закрыть по крестику
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                formPopup.style.display = 'none';
+            });
+        }
+        // Закрыть при клике вне формы
+        window.addEventListener('click', function(e) {
+            if (e.target === formPopup) {
+                formPopup.style.display = 'none';
+            }
+        });
+    }
+
+    // Умное переключение текста в поле message
     const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
     const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
     if (serviceSelect && messageField) {
@@ -16,31 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageField.placeholder = 'Дата, время, пожелания по съёмке...';
             }
         });
-        // Запускаем сразу, чтобы установить правильный placeholder
         serviceSelect.dispatchEvent(new Event('change'));
     }
 
-    if (floatingBtn && floatingForm) {
-        // Открыть форму по клику
-        floatingBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            floatingForm.style.display = 'flex';
-        });
-        // Закрыть форму по крестику
-        if (closeFormBtn) {
-            closeFormBtn.addEventListener('click', function() {
-                floatingForm.style.display = 'none';
-            });
-        }
-        // Закрыть форму при клике вне её (на фон)
-        window.addEventListener('click', function(e) {
-            if (e.target === floatingForm) {
-                floatingForm.style.display = 'none';
-            }
-        });
-    }
-
-    // Обработка отправки формы
+    // Отправка формы через fetch
     const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
@@ -51,17 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
             else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
             else { alert('Выберите направление'); return; }
             
-            const captchaValue = this.captcha.value.trim();
-            if (captchaValue !== '5') {
-                alert('Неверный ответ на капчу');
-                return;
-            }
-            if (!this.agreement.checked) {
-                alert('Подтвердите согласие на обработку персональных данных');
-                return;
-            }
+            const captcha = this.captcha.value.trim();
+            if (captcha !== '5') { alert('Неверный ответ на капчу'); return; }
+            if (!this.agreement.checked) { alert('Подтвердите согласие'); return; }
 
-            // Показываем спиннер
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerText;
             submitBtn.innerText = 'Отправка...';
@@ -77,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     message: this.message.value
                 })
             }).then(() => {
-                showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
-                this.reset();               // очищаем форму
-                floatingForm.style.display = 'none';  // закрываем форму (исправлено)
+                alert('✅ Заявка принята! Мы свяжемся с вами в ближайшее время.');
+                this.reset();
+                formPopup.style.display = 'none';
             }).catch(() => {
-                showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону +7-995-788-66-68', 'error');
+                alert('❌ Ошибка отправки. Пожалуйста, позвоните нам: +7-995-788-66-68');
             }).finally(() => {
                 submitBtn.innerText = originalText;
                 submitBtn.disabled = false;
@@ -89,29 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function showNotification(text, type = 'success') {
-        const notif = document.createElement('div');
-        notif.innerText = text;
-        notif.style.cssText = `position: fixed; bottom: 20px; left: 20px; background: ${type === 'success' ? '#4caf50' : '#f44336'}; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: bold;`;
-        document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 5000);
-    }
-
-    // Автоматическое появление формы через 20 секунд (можно изменить)
-    setTimeout(function() {
-        if (floatingForm && floatingForm.style.display !== 'flex') {
-            floatingForm.style.display = 'flex';
-            setTimeout(function() {
-                if (floatingForm.style.display === 'flex') {
-                    floatingForm.style.display = 'none';
-                }
+    // Автоматическое появление формы через 20 секунд
+    setTimeout(() => {
+        if (formPopup && formPopup.style.display !== 'flex') {
+            formPopup.style.display = 'flex';
+            setTimeout(() => {
+                if (formPopup.style.display === 'flex') formPopup.style.display = 'none';
             }, 7000);
         }
     }, 20000);
 });
 
-// Анимация счётчиков и появления элементов
+// ========== АНИМАЦИИ (оставляем как есть) ==========
 document.addEventListener('DOMContentLoaded', function() {
+    // Счётчики
     const statNumbers = document.querySelectorAll('.stat-number');
     const animateNumbers = () => {
         statNumbers.forEach(el => {
@@ -120,9 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!el.classList.contains('animated') && el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.classList.add('animated');
                 let current = 0;
-                const increment = target / 50;
+                const step = target / 50;
                 const timer = setInterval(() => {
-                    current += increment;
+                    current += step;
                     if (current >= target) {
                         el.innerText = target;
                         clearInterval(timer);
@@ -136,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateNumbers);
     window.addEventListener('load', animateNumbers);
 
-    // Плавное появление элементов
+    // Плавное появление
     const elements = document.querySelectorAll('.direction-card, .about__grid, .gallery-teaser__item, .cta__inner, .service-card, .advantage, .portfolio-card');
     elements.forEach(el => {
         el.style.opacity = '0';
@@ -145,8 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     const animateOnScroll = () => {
         elements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             }
@@ -159,13 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const nav = document.querySelector('.nav');
     if (mobileBtn && nav) {
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+        mobileBtn.addEventListener('click', () => nav.classList.toggle('active'));
         nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-            });
+            link.addEventListener('click', () => nav.classList.remove('active'));
         });
     }
 });
