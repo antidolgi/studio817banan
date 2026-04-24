@@ -77,7 +77,7 @@ body {
 .btn-outline {
     border: 2px solid #f1c40f;
     background: transparent;
-    color: #1e2a41;
+    color: ffff00;
 }
 .btn-outline:hover {
     background: #f1c40f20;
