@@ -823,3 +823,8 @@ body {
     color: #666;
     font-size: 0.9rem;
 }
+.studio-features-grid {
+    background: linear-gradient(135deg, #fff0f0, #ffe0e0);
+    padding: 30px;
+    border-radius: 48px;
+}
