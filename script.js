@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (floatingBtn && floatingForm) {
         floatingBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            floatingForm.style.display = 'flex';
+            floatingForm.classList.add('active');
         });
         if (closeFormBtn) {
             closeFormBtn.addEventListener('click', function() {
-                floatingForm.style.display = 'none';
+    floatingForm.classList.remove('active');
             });
         }
         window.addEventListener('click', function(e) {
             if (e.target === floatingForm) {
-                floatingForm.style.display = 'none';
+                floatingForm.classList.remove('active');
             }
         });
     }
@@ -96,10 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let formAutoShown = false;
     setTimeout(function() {
         if (!formAutoShown && floatingForm && floatingForm.style.display !== 'flex') {
-            floatingForm.style.display = 'flex';
+            classList.add('active');
             formAutoShown = true;
             setTimeout(() => {
-                if (floatingForm.style.display === 'flex') floatingForm.style.display = 'none';
+                if (floatingForm.classList.add('active')) floatingForm.style.display = 'none';
             }, 7000);
         }
     }, 20000);
