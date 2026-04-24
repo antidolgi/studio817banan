@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         if (closeFormBtn) {
             closeFormBtn.addEventListener('click', function() {
-    floatingForm.classList.remove('active');
+                floatingForm.classList.remove('active');
             });
         }
         window.addEventListener('click', function(e) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }).then(() => {
                 showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
                 this.reset();
-                floatingForm.style.display = 'none'; // ИСПРАВЛЕНО: floatingForm, а не floatingFormPopup
+                floatingForm.classList.remove('active');  // ← исправлено
             }).catch(() => {
                 showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону: +7-995-788-66-68', 'error');
             }).finally(() => {
@@ -92,14 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => notif.remove(), 5000);
     }
 
-    // Автоматическое появление формы через 20 секунд (не чаще одного раза за сессию)
+    // Автоматическое появление формы через 20 секунд
     let formAutoShown = false;
     setTimeout(function() {
-        if (!formAutoShown && floatingForm && floatingForm.style.display !== 'flex') {
-            classList.add('active');
+        if (!formAutoShown && floatingForm && !floatingForm.classList.contains('active')) {
+            floatingForm.classList.add('active');
             formAutoShown = true;
             setTimeout(() => {
-                if (floatingForm.classList.add('active')) floatingForm.style.display = 'none';
+                if (floatingForm.classList.contains('active')) {
+                    floatingForm.classList.remove('active');
+                }
             }, 7000);
         }
     }, 20000);
