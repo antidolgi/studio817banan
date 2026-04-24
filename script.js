@@ -4,20 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const floatingBtn = document.getElementById('floatingButton');
     const floatingForm = document.getElementById('floatingForm');
     const closeFormBtn = document.querySelector('.close-form');
+
     // Умное переключение текста в зависимости от выбора услуги
-const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
-const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
-if (serviceSelect && messageField) {
-    serviceSelect.addEventListener('change', function() {
-        if (this.value === 'banan') {
-            messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
-        } else {
-            messageField.placeholder = 'Дата, время, пожелания по съёмке...';
-        }
-    });
-    // Запускаем сразу, чтобы установить правильный placeholder
-    serviceSelect.dispatchEvent(new Event('change'));
-}
+    const serviceSelect = document.querySelector('#mainFloatingForm select[name="service"]');
+    const messageField = document.querySelector('#mainFloatingForm textarea[name="message"]');
+    if (serviceSelect && messageField) {
+        serviceSelect.addEventListener('change', function() {
+            if (this.value === 'banan') {
+                messageField.placeholder = 'Опишите задачу: какой сайт нужен (лендинг, магазин, портал), бюджет, сроки...';
+            } else {
+                messageField.placeholder = 'Дата, время, пожелания по съёмке...';
+            }
+        });
+        // Запускаем сразу, чтобы установить правильный placeholder
+        serviceSelect.dispatchEvent(new Event('change'));
+    }
 
     if (floatingBtn && floatingForm) {
         // Открыть форму по клику
@@ -43,64 +44,63 @@ if (serviceSelect && messageField) {
     const mainForm = document.getElementById('mainFloatingForm');
     if (mainForm) {
         mainForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const service = this.service.value;
-    let actionUrl = '';
-    if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
-    else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
-    else { alert('Выберите направление'); return; }
-    
-    const captchaValue = this.captcha.value.trim();
-    if (captchaValue !== '5') {
-        alert('Неверный ответ на капчу');
-        return;
+            e.preventDefault();
+            const service = this.service.value;
+            let actionUrl = '';
+            if (service === 'studio') actionUrl = 'https://formspree.io/f/xdaydekl';
+            else if (service === 'banan') actionUrl = 'https://formspree.io/f/meevzaow';
+            else { alert('Выберите направление'); return; }
+            
+            const captchaValue = this.captcha.value.trim();
+            if (captchaValue !== '5') {
+                alert('Неверный ответ на капчу');
+                return;
+            }
+            if (!this.agreement.checked) {
+                alert('Подтвердите согласие на обработку персональных данных');
+                return;
+            }
+
+            // Показываем спиннер
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Отправка...';
+            submitBtn.disabled = true;
+
+            fetch(actionUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: this.name.value,
+                    phone: this.phone.value,
+                    service: service,
+                    message: this.message.value
+                })
+            }).then(() => {
+                showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
+                this.reset();               // очищаем форму
+                floatingForm.style.display = 'none';  // закрываем форму (исправлено)
+            }).catch(() => {
+                showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону +7-995-788-66-68', 'error');
+            }).finally(() => {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            });
+        });
     }
-    if (!this.agreement.checked) {
-        alert('Подтвердите согласие на обработку персональных данных');
-        return;
+
+    function showNotification(text, type = 'success') {
+        const notif = document.createElement('div');
+        notif.innerText = text;
+        notif.style.cssText = `position: fixed; bottom: 20px; left: 20px; background: ${type === 'success' ? '#4caf50' : '#f44336'}; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: bold;`;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 5000);
     }
 
-    // Показываем спиннер и отправляем через fetch
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerText;
-    submitBtn.innerText = 'Отправка...';
-    submitBtn.disabled = true;
-
-    fetch(actionUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            name: this.name.value,
-            phone: this.phone.value,
-            service: service,
-            message: this.message.value
-        })
-    }).then(() => {
-        // Успешно
-        showNotification('✅ Заявка принята! Ожидайте звонка в ближайшее время.');
-        this.reset();
-        floatingFormPopup.style.display = 'none';
-    }).catch(() => {
-        showNotification('❌ Ошибка отправки. Попробуйте позвонить по телефону.+7-995-788-666-8', 'error');
-    }).finally(() => {
-        submitBtn.innerText = originalText;
-        submitBtn.disabled = false;
-    });
-});
-
-function showNotification(text, type = 'success') {
-    const notif = document.createElement('div');
-    notif.innerText = text;
-    notif.style.cssText = `position: fixed; bottom: 20px; left: 20px; background: ${type === 'success' ? '#4caf50' : '#f44336'}; color: white; padding: 12px 24px; border-radius: 40px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: bold;`;
-    document.body.appendChild(notif);
-    setTimeout(() => notif.remove(), 5000);
-}
-
-    // Автоматическое появление формы через 10 секунд (только если не открыта)
+    // Автоматическое появление формы через 20 секунд (можно изменить)
     setTimeout(function() {
         if (floatingForm && floatingForm.style.display !== 'flex') {
             floatingForm.style.display = 'flex';
-            // Скрыть автоматически через 7 секунд
             setTimeout(function() {
                 if (floatingForm.style.display === 'flex') {
                     floatingForm.style.display = 'none';
@@ -110,7 +110,7 @@ function showNotification(text, type = 'success') {
     }, 20000);
 });
 
-// Анимация счётчиков и появления элементов (оставляем как есть, но обернём для надёжности)
+// Анимация счётчиков и появления элементов
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
     const animateNumbers = () => {
