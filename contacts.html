@@ -46,20 +46,32 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">Свяжитесь с нами</h2>
-            <div class="contacts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
-                <div>
-                    <h3>📞 Телефоны</h3>
-                    <p>Фотостудия: <a href="tel:+79114480830">+7-911-448-08-30</a></p>
-                    <p>IT-агентство: <a href="tel:+79957886668">+7-995-788-66-68</a></p>
-                    <h3>✉️ Email</h3>
-                    <p><a href="mailto:pstudio817@yandex.ru">pstudio817@yandex.ru</a></p>
-                    <h3>💬 VK</h3>
-                    <p><a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a></p>
-                    <h3>📍 Адрес</h3>
-                    <p>г. Вологда, ул. Чернышевского, 120Г</p>
-                    <div id="yandex-map" style="width: 100%; height: 400px; margin-top: 30px; border-radius: 24px;"></div>
-
-<script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_КЛЮЧ&lang=ru_RU"></script>
+           <div class="contacts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+    <!-- Левая колонка: контакты и фото -->
+    <div>
+        <div class="contact-photo" style="margin-bottom: 30px;">
+            <img src="images/studio-entrance.jpg" alt="Вход в студию 817" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        </div>
+        <h3>📞 Телефоны</h3>
+        <p>Фотостудия: <a href="tel:+79114480830">+7-911-448-08-30</a> (договориться о ночной съёмке)</p>
+        <p>IT-агентство: <a href="tel:+79957886668">+7-995-788-66-68</a> (круглосуточно)</p>
+        <h3>✉️ Email</h3>
+        <p><a href="mailto:pstudio817@yandex.ru">pstudio817@yandex.ru</a></p>
+        <h3>💬 VK</h3>
+        <p><a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a></p>
+        <h3>📍 Адрес</h3>
+        <p>г. Вологда, ул. Чернышевского, 120Г</p>
+        <h3>🕒 Часы работы</h3>
+        <p>Фотостудия: ежедневно 10:00–22:00 (возможна ночная съёмка по согласованию)</p>
+        <p>IT-агентство: круглосуточно, без выходных</p>
+    </div>
+    <!-- Правая колонка: карта -->
+    <div>
+        <div id="yandex-map" style="width: 100%; height: 400px; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);"></div>
+        <p style="margin-top: 20px; text-align: center;"><a href="https://yandex.ru/maps/-/CPCF4WIl" target="_blank" class="btn btn-outline">Открыть в Яндекс.Картах →</a></p>
+    </div>
+</div>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_КЛЮЧ&lang=ru_RU"></script>
 <script>
     ymaps.ready(init);
     function init() {
@@ -122,7 +134,7 @@
 <div id="floatingForm" class="floating-form-popup">
     <span class="close-form">&times;</span>
     <h4>Оставить заявку</h4>
-    <form id="mainFloatingForm">
+    <form id="mainFloatingForm" method="POST">
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="tel" name="phone" placeholder="Телефон" required>
         <select name="service" required>
