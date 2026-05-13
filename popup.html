@@ -1,27 +1,27 @@
-<button class="floating-request-btn" id="requestBtn">Оставить заявку</button>
-<a href="banan.html" class="floating-banana" title="Банановое агентство">🍌</a>
+<button class="floating-request-btn open-popup">Оставить заявку</button>
+<a href="banan.html" class="floating-banana" title="Агентство">🍌</a>
 
 <div class="popup" id="popupForm">
   <div class="popup__body">
     <button class="popup__close" id="closePopup">✕</button>
-    <h3>Оставить заявку</h3>
+    <h3 style="margin-bottom:1.5rem; color:#111;">Оставить заявку</h3>
     <form id="mainForm" action="https://formspree.io/f/xdaydekl" method="POST">
       <input type="text" name="name" placeholder="Ваше имя" required>
       <input type="tel" name="phone" placeholder="Телефон" required>
-      <select name="service">
+      <select name="service" required>
         <option value="">Выберите направление</option>
         <option value="studio">Фотостудия</option>
         <option value="banan">IT-агентство</option>
       </select>
-      <textarea name="message" placeholder="Сообщение"></textarea>
-      <div class="captcha">
-        <label>Сколько будет 2 + 3? (цифрой)</label>
-        <input type="text" name="captcha" required pattern="5">
+      <textarea name="message" rows="2" placeholder="Дата, время или суть задачи"></textarea>
+      <div style="margin: 10px 0;">
+        <label style="font-size:0.9rem;">Сколько будет 2 + 3? (цифрой)</label>
+        <input type="text" name="captcha" required pattern="5" style="width: 80px;">
       </div>
       <label class="checkbox">
-        <input type="checkbox" name="agree" required> Я согласен с политикой конфиденциальности
+        <input type="checkbox" name="agree" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
       </label>
-      <button type="submit" class="btn btn--primary">Отправить</button>
+      <button type="submit" class="btn btn--primary" style="width:100%; margin-top:1rem;">Отправить</button>
     </form>
   </div>
 </div>
