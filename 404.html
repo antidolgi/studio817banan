@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница не найдена — Студия 817</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/studio-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .error-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+        .error-card {
+            background: var(--bg-secondary);
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 768px) { .error-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+<main class="section" style="text-align: center;">
+    <h1 style="font-size: 6rem; color: var(--accent);">🍌 404</h1>
+    <p style="font-size: 1.5rem; margin-bottom: 2rem;">Кажется, вы забрели не туда. Но это отличный повод познакомиться с нами!</p>
+
+    <div class="error-grid container">
+        <div class="error-card">
+            <div style="font-size: 3rem;">📸</div>
+            <h2 style="font-family: 'Bebas Neue'; font-size: 2.5rem;">Фотостудия 817</h2>
+            <p>Аренда зала с панорамными окнами, светом и гримёркой. Забронируйте прямо сейчас.</p>
+            <a href="studio.html" class="btn btn--accent">Забронировать</a>
+        </div>
+        <div class="error-card">
+            <div style="font-size: 3rem;">🍌</div>
+            <h2 style="font-family: 'Bebas Neue'; font-size: 2.5rem;">Банановое агентство</h2>
+            <p>Сайты, SEO, реклама — с гарантией окупаемости. Оставьте заявку и получите чек-лист.</p>
+            <a href="banan.html" class="btn btn--accent">Заказать сайт</a>
+        </div>
+    </div>
+    <div style="margin-top: 3rem;">
+        <p style="font-size: 1.2rem;">Используйте промокод <strong style="background: var(--accent); padding: 0.3rem 0.8rem; border-radius: 8px;">БАНАН404</strong> для скидки 40% на первую услугу агентства.</p>
+    </div>
+</main>
+<div id="footer-container"></div>
+<div id="popup-container"></div>
+<script src="js/components.js"></script>
+</body>
+</html>
