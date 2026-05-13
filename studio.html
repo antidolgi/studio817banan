@@ -1,7 +1,7 @@
   <!DOCTYPE html>
 <html lang="ru">
 <head>
-       <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -26,68 +26,103 @@
 <div id="header-container"></div>
 
 <main>
-  <section class="hero" style="min-height:60vh; background:url('images/studio-hero.jpg') center/cover no-repeat;">
-    <div class="hero__overlay" style="background:rgba(0,0,0,0.3);"></div>
-    <div class="hero__content container" style="position:relative; z-index:2;">
+  <!-- Hero -->
+  <section class="hero" style="min-height:70vh; background: url('images/studio-hero.jpg') center/cover no-repeat;">
+    <div class="hero__overlay" style="background: rgba(0,0,0,0.4);"></div>
+    <div class="hero__content container" style="position:relative; z-index:2; text-align:left;">
       <h1 class="hero__title">Фотостудия 817</h1>
-      <p class="hero__subtitle">Пространство, которое работает на ваш успех</p>
+      <p class="hero__subtitle">Пространство, которое работает на ваш успех. Свет, фоны, гримёрка — всё готово.</p>
+      <a href="#booking" class="btn btn--primary">Забронировать</a>
     </div>
   </section>
 
+  <!-- О студии + характеристики с иконками -->
   <section class="section">
     <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
       <div>
-        <h2>О студии</h2>
-        <p><strong>70 м²</strong> свободы с панорамными окнами 4,5 м. Профессиональный свет Godox, гримёрка, прокат одежды. Вместимость до 30 человек.</p>
+        <h2 style="font-family:var(--font-heading); font-size:3rem; margin-bottom:1rem;">О студии</h2>
+        <p style="font-size:1.2rem;">70 м² творческой свободы с панорамными окнами 4,5 метра. Идеальное место для фотосессий, видео, мероприятий.</p>
       </div>
-      <img src="images/about-photo.jpg" alt="Интерьер студии" style="border-radius:32px;">
+      <img src="images/about-photo.jpg" alt="Интерьер" style="border-radius:32px;">
+    </div>
+    <div class="container" style="margin-top:3rem;">
+      <div class="why__grid" style="grid-template-columns: repeat(3,1fr);">
+        <div class="why__item">📐 <strong>70 м²</strong><br>площадь зала</div>
+        <div class="why__item">🏢 <strong>4,5 м</strong><br>потолки</div>
+        <div class="why__item">🪞 <strong>Гримёрка</strong><br>на 2 рабочих места</div>
+        <div class="why__item">👥 <strong>До 30 человек</strong><br>вместимость</div>
+        <div class="why__item">🅿️ <strong>Парковка</strong><br>рядом</div>
+        <div class="why__item">📶 <strong>Wi‑Fi 1 Гбит/с</strong><br>для стримов</div>
+      </div>
     </div>
   </section>
 
+  <!-- Стоимость с иконками -->
   <section class="section" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 class="section-title">Стоимость аренды</h2>
-      <table style="width:100%; border-collapse:collapse; margin-bottom:2rem;">
-        <tr><td>Будни</td><td><strong>1800 ₽/час</strong></td></tr>
-        <tr><td>Выходные/праздники</td><td><strong>2000 ₽/час</strong></td></tr>
-        <tr><td>Мероприятия</td><td><strong>2200 ₽/час</strong></td></tr>
-      </table>
-      <h3>Доплаты</h3>
-      <ul>
-        <li>Съёмка с животными: +500 ₽/час</li>
-        <li>Гримёрка сверх времени: 200 ₽/час</li>
-        <li>Установка бумажного фона: 300 ₽</li>
-        <li>Установка атласного фона: 500 ₽</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Оборудование</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem;">
-        <div>💡 2 импульсных источника Godox</div>
-        <div>💡 2 постоянных источника Godox</div>
-        <div>🎯 Насадки: софтбокс, октобокс, зонт, тарелка</div>
-        <div>🎨 Цветные бумажные фоны, прокат одежды</div>
+      <h2 class="section-title">💰 Стоимость аренды</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:1.5rem;">
+        <div style="background:#fff; padding:2rem; border-radius:24px; text-align:center;">
+          <span style="font-size:2rem;">📅</span>
+          <h3>Будни</h3>
+          <p style="font-size:2rem; font-weight:bold; color:var(--accent);">1 800 ₽</p>
+          <p>за час</p>
+        </div>
+        <div style="background:#fff; padding:2rem; border-radius:24px; text-align:center;">
+          <span style="font-size:2rem;">🎉</span>
+          <h3>Выходные / праздники</h3>
+          <p style="font-size:2rem; font-weight:bold; color:var(--accent);">2 000 ₽</p>
+          <p>за час</p>
+        </div>
+        <div style="background:#fff; padding:2rem; border-radius:24px; text-align:center;">
+          <span style="font-size:2rem;">🎬</span>
+          <h3>Мероприятия</h3>
+          <p style="font-size:2rem; font-weight:bold; color:var(--accent);">2 200 ₽</p>
+          <p>за час</p>
+        </div>
+      </div>
+      <div style="margin-top:2rem;">
+        <h3>Доплаты</h3>
+        <ul>
+          <li>🐾 Съёмка с животными: +500 ₽/час</li>
+          <li>💄 Гримёрка сверх времени: 200 ₽/час</li>
+          <li>🎨 Установка бумажного фона: 300 ₽</li>
+          <li>🎀 Установка атласного фона: 500 ₽</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="section" id="booking">
+  <!-- Оборудование с иконками -->
+  <section class="section">
     <div class="container">
-      <h2 class="section-title">Правила бронирования</h2>
-      <ol>
-        <li>Бронь по предоплате 50% (VK или звонок)</li>
-        <li>Отмена менее чем за 48 часов — предоплата не возвращается</li>
-        <li>Съёмочный час — 55 минут</li>
-        <li>Сменная обувь обязательна</li>
-        <li>Животные — по согласованию (+500 ₽/час)</li>
-        <li>Запрещён открытый огонь</li>
-      </ol>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="tel:+79114480830" class="btn btn--primary">Позвонить</a>
-        <a href="https://vk.com/write-817" target="_blank" class="btn btn--accent" style="margin-left:1rem;">Забронировать в VK</a>
+      <h2 class="section-title">🔧 Оборудование</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:2rem;">
+        <div class="why__item">💡 2 импульсных источника Godox</div>
+        <div class="why__item">💡 2 постоянных источника Godox</div>
+        <div class="why__item">🎯 Насадки: софтбокс, октобокс, зонт, тарелка</div>
+        <div class="why__item">🌈 Цветные бумажные фоны (4 цвета)</div>
+        <div class="why__item">👗 Прокат одежды</div>
+        <div class="why__item">📸 Штатный фотограф (по запросу)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Правила бронирования с иконками -->
+  <section class="section" id="booking" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title">📋 Правила бронирования</h2>
+      <div class="why__grid" style="grid-template-columns: repeat(2,1fr);">
+        <div class="why__item">🔹 Предоплата 50% (VK или звонок)</div>
+        <div class="why__item">🔹 Отмена за 48 ч – возврат (вых/празд – 96 ч)</div>
+        <div class="why__item">🔹 Съёмочный час – 55 мин</div>
+        <div class="why__item">🔹 Сменная обувь обязательна</div>
+        <div class="why__item">🔹 Животные – по согласованию (+500 ₽/ч)</div>
+        <div class="why__item">🔹 Запрещён открытый огонь</div>
+      </div>
+      <div style="text-align:center; margin-top:3rem;">
+        <a href="tel:+79114480830" class="btn btn--primary" style="margin-right:1rem;">📞 Позвонить</a>
+        <a href="https://vk.com/write-817" target="_blank" class="btn btn--outline">📱 Забронировать в VK</a>
       </div>
     </div>
   </section>
