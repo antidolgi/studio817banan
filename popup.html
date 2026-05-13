@@ -1,0 +1,27 @@
+<button class="floating-request-btn" id="requestBtn">Оставить заявку</button>
+<a href="banan.html" class="floating-banana" title="Банановое агентство">🍌</a>
+
+<div class="popup" id="popupForm">
+  <div class="popup__body">
+    <button class="popup__close" id="closePopup">✕</button>
+    <h3>Оставить заявку</h3>
+    <form id="mainForm" action="https://formspree.io/f/xdaydekl" method="POST">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="tel" name="phone" placeholder="Телефон" required>
+      <select name="service">
+        <option value="">Выберите направление</option>
+        <option value="studio">Фотостудия</option>
+        <option value="banan">IT-агентство</option>
+      </select>
+      <textarea name="message" placeholder="Сообщение"></textarea>
+      <div class="captcha">
+        <label>Сколько будет 2 + 3? (цифрой)</label>
+        <input type="text" name="captcha" required pattern="5">
+      </div>
+      <label class="checkbox">
+        <input type="checkbox" name="agree" required> Я согласен с политикой конфиденциальности
+      </label>
+      <button type="submit" class="btn btn--primary">Отправить</button>
+    </form>
+  </div>
+</div>
