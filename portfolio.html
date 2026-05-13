@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Yandex.Metrika counter -->
+       <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -14,191 +14,163 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/108687132" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-    <meta charset="UTF-8">
-    <title>Портфолио Студии 817 — сайты и фотосъёмки</title>
-<meta name="description" content="Реальные кейсы Студии 817: создание сайтов для бизнеса, интерьеры фотостудии, коммерческие съёмки. Примеры работ и результаты.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta charset="UTF-8">
+  <title>Портфолио Студии 817 — сайты и фото</title>
+  <meta name="description" content="Примеры работ: созданные сайты, фотосессии в студии. Кейсы с результатами.">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/studio-theme.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="header-container"></div>
 
-<header class="header">
-    <div class="container">
-        <div class="header__inner">
-            <div class="logo">
-                <img src="images/logo.png" alt="Студия 817" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <span class="logo__text">Студия 817</span>
-            </div>
-            <nav class="nav">
-                <a href="index.html">Главная</a>
-                <a href="studio.html">Фотостудия</a>
-                <a href="banan.html">Банановое агентство</a>
-                <a href="portfolio.html" class="active">Портфолио</a>
-                <a href="blog.html" class="active">Блог</a>
-                <a href="contacts.html">Контакты</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-        </div>
-    </div>
-</header>
+<main class="section">
+  <div class="container">
+    <h1 class="section-title">Наши проекты</h1>
 
-<main>
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Наши проекты</h2>
-            <div class="portfolio-filter" style="display: flex; gap: 16px; justify-content: center; margin-bottom: 40px;">
-                <button class="filter-btn active btn btn-outline" data-filter="all" style="padding: 8px 24px;">Все</button>
-                <button class="filter-btn btn btn-outline" data-filter="site" style="padding: 8px 24px;">Сайты</button>
-                <button class="filter-btn btn btn-outline" data-filter="photo" style="padding: 8px 24px;">Фото</button>
-            </div>
-            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 30px;">
-               <div class="portfolio-card" data-category="site">
-    <div class="portfolio-card__image">
-        <img src="images/portfolio/kommunal-s.jpg" alt="Сайт аренды туалетных кабин">
+    <!-- Табы -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="websites">🌐 Сайты и IT-проекты</button>
+      <button class="tab-btn" data-tab="photo">📸 Фотостудия</button>
     </div>
-    <div class="portfolio-card__content">
-        <h4>kommunal-s.pro</h4>
-        <p><strong>Задача:</strong> Привлечь клиентов на аренду туалетных кабин в Москве.</p>
-        <p><strong>Решение:</strong> Разработали лендинг с онлайн-калькулятором стоимости и формой заявки. Настроили Яндекс.Директ.</p>
-        <p><strong>Результат:</strong> +35% заявок в первый месяц, окупаемость рекламы — 14 дней.</p>
-        <a href="https://kommunal-s.ru" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
-    </div>
-</div>
-                <div class="portfolio-card" data-category="site">
-    <div class="portfolio-card__image">
-        <img src="images/portfolio/bio-ecopro.jpg" alt="bio-ecopro.ru">
-    </div>
-    <div class="portfolio-card__content">
-        <h4>bio-ecopro.ru</h4>
-        <p><strong>Задача:</strong> Создать сайт для аренды и продажи санитарных систем, который вызовет доверие и повысит продажи.</p>
-        <p><strong>Решение:</strong> Разработали дизайн сайта, логотип компании, настроили каталог с удобной фильтрацией, интегрировали форму заказа с отправкой в Max, VK, TG и email.</p>
-        <p><strong>Результат:</strong> Количество онлайн-заказов выросло на 25% в первый месяц, средний чек увеличился на 15% за счёт кросс-продаж.</p>
-        <a href="https://bio-ecopro.ru" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
-    </div>
-</div>
-                <div class="portfolio-card" data-category="site">
-    <div class="portfolio-card__image">
-        <img src="images/portfolio/zabor.jpg" alt="Заборы под ключ">
-    </div>
-    <div class="portfolio-card__content">
-        <h4>Заборы под ключ</h4>
-        <p><strong>Задача:</strong> Привлечь больше клиентов на услуги по установке заборов и ангаров в Вологодской области.</p>
-        <p><strong>Решение:</strong> Сделали лендинг с калькулятором стоимости, портфолио работ и формой заявки. Настроили таргет ВК.</p>
-        <p><strong>Результат:</strong> +40% заявок за 2 месяца, стоимость лида снизилась на 30%.</p>
-        <a href="https://antidolgi.github.io/zabor/" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
-    </div>
-</div>
-               <div class="portfolio-card" data-category="site">
-    <div class="portfolio-card__image">
-        <img src="images/portfolio/eurolos35green.jpg" alt="Eurolos">
-    </div>
-    <div class="portfolio-card__content">
-        <h4>Eurolos — септики под ключ</h4>
-        <p><strong>Задача:</strong> Сделать продающий сайт для официального дилера септиков.</p>
-        <p><strong>Решение:</strong> Разработали лендинг с онлайн-калькулятором подбора модели, с видео блоками, блоками преимуществ и формой заявки. Добавили отзывы и сертификаты.</p>
-        <p><strong>Результат:</strong> Конверсия в заявку — 12%, сайт окупился за 3 недели.</p>
-        <a href="https://antidolgi.github.io/eurolos35green/" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
-    </div>
-</div>
-                <div class="portfolio-card" data-category="site">
-    <div class="portfolio-card__image">
-        <img src="images/portfolio/antidolgi24.jpg" alt="АнтиДолги24">
-    </div>
-    <div class="portfolio-card__content">
-        <h4>АнтиДолги24 — списание долгов</h4>
-        <p><strong>Задача:</strong> Создать экспертный сайт для юридической компании по банкротству.</p>
-        <p><strong>Решение:</strong> Разработали структуру, подготовили статьи, настроили SEO и форму обратной связи. Интегрировали чат-бота для первичных консультаций.</p>
-        <p><strong>Результат:</strong> Рост органического трафика на 60% за 3 месяца, количество заявок увеличилось вдвое.</p>
-        <a href="https://antidolgi24.ru/" target="_blank" class="portfolio-card__link">Посмотреть сайт →</a>
-    </div>
-</div>
-                <div class="portfolio-card" data-category="photo">
-    <div class="portfolio-card__image">
-        <img src="images/gallery/studio-7.jpg" alt="Фотосессия в студии">
-    </div>
-    <div class="portfolio-card__content">
-        <h4>Портретная съёмка в Studio 817</h4>
-        <p><strong>Задача:</strong> Показать возможности пространства для фотосессий.</p>
-        <p><strong>Решение:</strong> Организовали тестовую съёмку с профессиональной моделью и фотографом. Использовали естественный свет и студийное оборудование.</p>
-        <p><strong>Результат:</strong> Портфолио привлекло 5 новых клиентов на коммерческие съёмки в первую неделю.</p>
-        <a href="studio.html" class="portfolio-card__link">Забронировать студию →</a>
-    </div>
-</div>
+
+    <!-- Вкладка Сайты -->
+    <div class="tab-content active" id="tab-websites">
+      <div class="portfolio__grid">
+        <!-- Проекты -->
+        <div class="portfolio__item" data-project="potolki35">
+          <img src="images/portfolio/potolki35.jpg" alt="Потолки35" loading="lazy">
+          <h3>Потолки35</h3>
+          <p>Лендинг с калькулятором и галереей «до/после».</p>
         </div>
-    </section>
+        <div class="portfolio__item" data-project="remontkvartir">
+          <img src="images/portfolio/remontkvartir.jpg" alt="Ремонт квартир" loading="lazy">
+          <h3>Ремонт квартир</h3>
+          <p>Визуализация стилей, калькулятор, блок «Было-стало».</p>
+        </div>
+        <div class="portfolio__item" data-project="stroyka">
+          <img src="images/portfolio/stroyka.jpg" alt="Стройка" loading="lazy">
+          <h3>Стройка</h3>
+          <p>Строительный портал с портфолио и статьями.</p>
+        </div>
+        <div class="portfolio__item" data-project="kommunals">
+          <img src="images/portfolio/kommunal-s.jpg" alt="kommunal-s.pro" loading="lazy">
+          <h3>kommunal-s.pro</h3>
+          <p>Аренда туалетных кабин. +35% заявок в первый месяц.</p>
+        </div>
+        <div class="portfolio__item" data-project="bioecopro">
+          <img src="images/portfolio/bio-ecopro.jpg" alt="bio-ecopro.ru" loading="lazy">
+          <h3>bio-ecopro.ru</h3>
+          <p>Продажа санитарных систем. Рост онлайн-заказов на 25%.</p>
+        </div>
+        <div class="portfolio__item" data-project="eurolos">
+          <img src="images/portfolio/eurolos35green.jpg" alt="Eurolos — септики" loading="lazy">
+          <h3>Eurolos — септики</h3>
+          <p>Калькулятор подбора, видео. Конверсия 12%, окупаемость 3 недели.</p>
+        </div>
+        <div class="portfolio__item" data-project="antidolgi24">
+          <img src="images/portfolio/antidolgi24.jpg" alt="АнтиДолги24" loading="lazy">
+          <h3>АнтиДолги24</h3>
+          <p>Сайт для юристов. SEO, чат-бот. Трафик +60%.</p>
+        </div>
+        <div class="portfolio__item" data-project="videodom35">
+          <img src="images/portfolio/videodom35.jpg" alt="Видеодом35" loading="lazy">
+          <h3>Видеодом35</h3>
+          <p>Установка видеодомофонов. Лендинг с преимуществами.</p>
+        </div>
+        <div class="portfolio__item" data-project="cctv">
+          <img src="images/portfolio/cctv-planner.jpg" alt="Видео Помощник" loading="lazy">
+          <h3>Видео Помощник (прототип)</h3>
+          <p>Облачный AI-планировщик видеонаблюдения.</p>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+        🍌 Понравился проект? Некоторые готовые решения доступны к продаже или адаптации под вашу сферу. <a href="banan.html">Свяжитесь с нами</a> — обсудим.
+      </p>
+    </div>
+
+    <!-- Вкладка Фотостудия -->
+    <div class="tab-content" id="tab-photo">
+      <div class="gallery__grid">
+        <a href="images/gallery/studio-1.jpg" class="gallery__item" data-lightbox>
+          <img src="images/gallery/studio-1.jpg" alt="Портрет" loading="lazy">
+        </a>
+        <a href="images/gallery/studio-2.jpg" class="gallery__item" data-lightbox>
+          <img src="images/gallery/studio-2.jpg" alt="Предметка" loading="lazy">
+        </a>
+        <a href="images/gallery/studio-3.jpg" class="gallery__item" data-lightbox>
+          <img src="images/gallery/studio-3.jpg" alt="Семейная" loading="lazy">
+        </a>
+        <!-- При желании добавить больше фото -->
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://vk.com/studio817" target="_blank" class="btn btn--accent">Смотреть больше в VK →</a>
+      </div>
+    </div>
+
+  </div>
 </main>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer__inner">
-            <div class="footer__col">
-                <div class="footer__logo">Студия 817</div>
-                <p>Фотостудия и IT-агентство в Вологде</p>
-            </div>
-            <div class="footer__col">
-                <h4>Контакты</h4>
-                <a href="tel:+79114480830">+7-911-448-08-30 (студия)</a>
-                <a href="tel:+79957886668">+7-995-788-66-68 (IT)</a>
-                <a href="mailto:pstudio817@yandex.ru">pstudio817@yandex.ru</a>
-                <a href="https://vk.com/studio817" target="_blank">vk.com/studio817</a>
-            </div>
-            <div class="footer__col">
-                <h4>Соцсети</h4>
-                <a href="https://vk.com/studio817" target="_blank">VK</a>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p>© 2025 Студия 817. Все права защищены.</p>
-        </div>
-    </div>
-</footer>
-
-<script src="script.js"></script>
-<script>
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-card'); // важно: class="portfolio-card"
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.getAttribute('data-filter');
-            portfolioItems.forEach(item => {
-                if(filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
-    <!-- Плавающая кнопка и форма -->
-<div id="floatingButton" class="floating-btn">Оставить заявку</div>
-
-<div id="floatingForm" class="floating-form-popup">
-    <span class="close-form">&times;</span>
-    <h4>Оставить заявку</h4>
-    <form id="mainFloatingForm" method="POST">
-        <input type="text" name="name" placeholder="Ваше имя" required>
-        <input type="tel" name="phone" placeholder="Телефон" required>
-        <select name="service" required>
-            <option value="">Выберите направление</option>
-            <option value="studio">Фотостудия (бронь/съёмка)</option>
-            <option value="banan">Банановое агентство (сайты, SEO)</option>
-        </select>
-        <textarea name="message" rows="2" placeholder="Дата, время, пожелания..."></textarea>
-        
-        <!-- КАПЧА -->
-        <div class="captcha" style="margin: 10px 0;">
-            <label>Сколько будет 2 + 3? (цифрой)</label>
-            <input type="text" name="captcha" required>
-        </div>
-        
-        <label class="checkbox-label">
-            <input type="checkbox" name="agreement" required> Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
-        </label>
-        <button type="submit">Отправить</button>
-    </form>
+<!-- Модалка для подробного описания проекта -->
+<div class="modal" id="projectModal">
+  <div class="modal__body">
+    <button class="modal__close" id="closeModal">✕</button>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <a href="#" id="modalLink" target="_blank" class="btn btn--primary" style="margin-top:1rem;">Посмотреть сайт</a>
+  </div>
 </div>
+
+<div id="footer-container"></div>
+<div id="popup-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script>
+// Табы
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Подробное описание проектов (данные можно менять)
+const projects = {
+  potolki35: { title:'Потолки35', desc:'Лендинг для локального бизнеса по установке потолков. Сделали калькулятор, галерею, форму захвата. Результат: рост заявок на 40%.', url:'https://antidolgi.github.io/potolki35/' },
+  remontkvartir: { title:'Ремонт квартир', desc:'Многостраничный сайт с калькулятором стоимости, портфолио и блоком «Было-стало». Удобная демонстрация услуг.', url:'https://antidolgi.github.io/remontkvartir/' },
+  stroyka: { title:'Стройка', desc:'Информационный строительный портал с возможностью публикации статей и проектов.', url:'https://antidolgi.github.io/stroyka/' },
+  kommunals: { title:'kommunal-s.pro', desc:'Аренда туалетных кабин в Москве. Лендинг с онлайн-калькулятором и формой заявки. +35% заявок в первый месяц.', url:'https://kommunal-s.pro/' },
+  bioecopro: { title:'bio-ecopro.ru', desc:'Интернет-магазин санитарных систем. Дизайн, каталог, интеграция с мессенджерами. Рост заказов на 25%.', url:'https://bio-ecopro.ru/' },
+  eurolos: { title:'Eurolos — септики', desc:'Лендинг для официального дилера. Калькулятор подбора, видео. Конверсия 12%, окупаемость за 3 недели.', url:'https://antidolgi.github.io/eurolos35green/' },
+  antidolgi24: { title:'АнтиДолги24', desc:'Сайт юридической компании. SEO, чат-бот, статьи. Трафик +60%, заявки удвоились.', url:'https://antidolgi.github.io/antidolgi24-site/' },
+  videodom35: { title:'Видеодом35', desc:'Лендинг по установке видеодомофонов. Информативный, с формой заявки.', url:'https://antidolgi.github.io/videodom35/' },
+  cctv: { title:'Видео Помощник', desc:'Облачная платформа проектирования видеонаблюдения с AI-ассистентом. MVP для демонстрации инвесторам.', url:'https://antidolgi.github.io/cctv-planner/prototype_v4.html' }
+};
+
+// Открытие модального окна при клике на карточку проекта
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalLink = document.getElementById('modalLink');
+const closeModal = document.getElementById('closeModal');
+
+document.querySelectorAll('.portfolio__item[data-project]').forEach(item => {
+  item.addEventListener('click', function(e) {
+    const key = this.dataset.project;
+    if (projects[key]) {
+      modalTitle.textContent = projects[key].title;
+      modalDesc.textContent = projects[key].desc;
+      modalLink.href = projects[key].url;
+      modal.classList.add('active');
+    }
+  });
+});
+
+closeModal.addEventListener('click', () => modal.classList.remove('active'));
+window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+</script>
 </body>
 </html>
