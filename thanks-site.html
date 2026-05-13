@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за заявку! — Банановое агентство</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/agency-theme.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0C1B2D; color: #fff; }
+        .thanks-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .thanks-icon { font-size: 5rem; margin-bottom: 1.5rem; }
+        .thanks-title { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; margin-bottom: 1rem; }
+        .thanks-subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem; max-width: 500px; }
+        .thanks-promo {
+            background: var(--accent);
+            color: #000;
+            padding: 1.5rem 2.5rem;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        .btn-vk {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #0077FF;
+            color: #fff;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s;
+            margin-bottom: 1rem;
+        }
+        .btn-vk:hover { transform: translateY(-3px); }
+        .back-link { color: rgba(255,255,255,0.7); margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="thanks-container">
+        <div class="thanks-icon">🍌🎉</div>
+        <h1 class="thanks-title">Заявка принята!</h1>
+        <p class="thanks-subtitle">Мы уже изучаем вашу задачу и свяжемся с вами в течение 2 часов в рабочее время. Чек-лист «10 ошибок сайта» придёт на почту в ближайшие минуты.</p>
+        <div class="thanks-promo">Ваш промокод на 15% скидку: <strong>БАНАНЫ15</strong></div>
+        <p style="margin-bottom: 0.5rem;">А пока присоединяйтесь к нашему сообществу:</p>
+        <a href="https://vk.com/antidolgim" target="_blank" class="btn-vk">Перейти в VK →</a>
+        <p style="font-size: 0.9rem; opacity: 0.6;">Там свежие кейсы, советы и банановое настроение.</p>
+        <a href="/" class="back-link">Вернуться на главную</a>
+    </div>
+</body>
+</html>
