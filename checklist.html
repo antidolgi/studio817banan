@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чек-лист 10 ошибок — Банановое агентство 817</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f7fa;
+            color: #1E2A38;
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 32px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        /* Кнопка сохранения */
+        .save-pdf-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #F0A800;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .save-pdf-btn:hover {
+            transform: scale(1.05);
+            background: #e09800;
+        }
+        /* Шапка */
+        .header {
+            background: #0C1B2D;
+            color: #fff;
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "🍌";
+            font-size: 6rem;
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: #F0A800;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+        .header .logo-text {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            background: #F0A800;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            margin-top: 10px;
+        }
+
+        .intro-text {
+            background: #FFF9E6;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-left: 5px solid #F0A800;
+        }
+
+        /* Список ошибок */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .item {
+            background: #F8FAFC;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #E2E8F0;
+        }
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .item-emoji {
+            font-size: 2rem;
+            background: #fff;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .item-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #0C1B2D;
+            letter-spacing: 0.5px;
+        }
+        .problem {
+            font-weight: 700;
+            color: #0C1B2D;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .instruction {
+            color: #2D3748;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        .cta-hint {
+            color: #F0A800;
+            font-weight: 700;
+            font-size: 0.95rem;
+            background: #FFF9E6;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .footer-note {
+            background: #0C1B2D;
+            color: #fff;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-note h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #F0A800;
+            margin-bottom: 10px;
+        }
+        .phone-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            background: #F0A800;
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+        .sub-contact {
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+        }
+
+        /* Стили для печати: скрываем кнопку сохранения */
+        @media print {
+            .save-pdf-btn { display: none; }
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Кнопка сохранить как PDF -->
+        <button class="save-pdf-btn" onclick="window.print()">📥 Сохранить как PDF</button>
+
+        <!-- Шапка -->
+        <div class="header">
+            <h1>🍌 10 ошибок на сайте, убивающих продажи</h1>
+            <p>Чек-лист от Бананового агентства 817</p>
+            <div class="logo-text">Студия 817</div>
+        </div>
+
+        <!-- Введение -->
+        <div class="intro-text">
+            Мы проверили десятки сайтов и собрали самые частые проблемы, из-за которых клиенты уходят, а заявки не приходят. Проверьте свой сайт по этому списку — возможно, он теряет деньги прямо сейчас.
+        </div>
+
+        <!-- 10 пунктов (без изменений) -->
+        <div class="checklist">
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🐢</div>
+                    <div class="item-title">Медленная загрузка</div>
+                </div>
+                <div class="problem">40% посетителей уходят, если сайт грузится дольше 3 секунд.</div>
+                <div class="instruction">🔧 Проверьте: откройте <strong>PageSpeed Insights</strong> от Google и вставьте адрес сайта. Если показатель ниже 60 – срочно нужна оптимизация изображений и кода.</div>
+                <span class="cta-hint">Не знаете, как ускорить? Звоните – настроим кэширование и сжатие за 1 день.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🚫</div>
+                    <div class="item-title">Нет призыва к действию</div>
+                </div>
+                <div class="problem">Посетитель заходит на сайт и не понимает, что делать дальше: позвонить, оставить заявку, купить?</div>
+                <div class="instruction">🔧 Проверьте: на каждой странице должна быть яркая кнопка с глаголом («Получить консультацию», «Рассчитать стоимость»).</div>
+                <span class="cta-hint">Если кнопки нет или она теряется – мы переработаем дизайн и расставим CTA правильно.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🗺️</div>
+                    <div class="item-title">Сложная навигация</div>
+                </div>
+                <div class="problem">Меню запутанное, важные страницы спрятаны. Клиент уходит к конкурентам, где всё понятно.</div>
+                <div class="instruction">🔧 Проверьте: попросите друга найти на вашем сайте конкретную услугу за 5 секунд. Если не получилось – структуру надо упрощать.</div>
+                <span class="cta-hint">Разработаем интуитивно понятную структуру и адаптивное меню.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">📱</div>
+                    <div class="item-title">Нечитаемый текст на телефоне</div>
+                </div>
+                <div class="problem">На мобильном шрифт мелкий, кнопки не нажимаются. А 70% трафика сейчас – с мобильных.</div>
+                <div class="instruction">🔧 Проверьте: откройте сайт на смартфоне. Если нужно увеличивать масштаб или промахиваетесь по кнопкам – верстка не адаптивна.</div>
+                <span class="cta-hint">Сделаем адаптивный дизайн, который идеально выглядит на любом экране.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🔍</div>
+                    <div class="item-title">Не заполнены Title и Description</div>
+                </div>
+                <div class="problem">Сайт невидим в поиске или выглядит неинтересно в выдаче Яндекса.</div>
+                <div class="instruction">🔧 Проверьте: вбейте в поиск «site:вашсайт.ru». Если заголовки выглядят как «Главная» или обрезаны – SEO-теги не настроены.</div>
+                <span class="cta-hint">Мы составим продающие мета-теги, которые увеличат кликабельность в 2 раза.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">⭐</div>
+                    <div class="item-title">Нет доверия</div>
+                </div>
+                <div class="problem">Ни отзывов, ни сертификатов, ни кейсов. Посетитель не понимает, почему стоит выбрать именно вас.</div>
+                <div class="instruction">🔧 Проверьте: есть ли на сайте блок «Отзывы» или «Наши клиенты» с реальными фото/видео? Если нет – добавьте.</div>
+                <span class="cta-hint">Поможем собрать и красиво оформить отзывы, снять видео-кейсы.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">📝</div>
+                    <div class="item-title">Сложные формы заявки</div>
+                </div>
+                <div class="problem">Чем больше полей нужно заполнить, тем меньше заявок вы получите.</div>
+                <div class="instruction">🔧 Проверьте: уберите лишние поля (адрес, город, как узнали). Оставьте только имя и телефон.</div>
+                <span class="cta-hint">Настроим умную форму с автоподстановкой и мгновенной отправкой в CRM.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">📉</div>
+                    <div class="item-title">Нет аналитики</div>
+                </div>
+                <div class="problem">Вы не знаете, сколько посетителей заходят, откуда они и где уходят. Бюджет на рекламу тратится впустую.</div>
+                <div class="instruction">🔧 Проверьте: установлена ли Яндекс.Метрика? Видите ли вы конверсии? Если нет – счетчик не настроен.</div>
+                <span class="cta-hint">Установим и настроим аналитику, научим читать отчёты.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🖼️</div>
+                    <div class="item-title">Неуникальные или плохие фото</div>
+                </div>
+                <div class="problem">Стоковые картинки снижают доверие. Размытые фото убивают желание покупать.</div>
+                <div class="instruction">🔧 Проверьте: откройте карточку товара/услуги. Фото должны быть чёткими и настоящими. Если стоит картинка из интернета – замените на своё.</div>
+                <span class="cta-hint">Есть своя фотостудия – проведём предметную съёмку и обработаем фото для сайта.</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-emoji">🛑</div>
+                    <div class="item-title">Отсутствие гарантий</div>
+                </div>
+                <div class="problem">Клиент боится ошибиться с выбором. Без чётких гарантий доверие падает.</div>
+                <div class="instruction">🔧 Проверьте: написано ли на сайте что-то вроде «Вернём деньги, если…» или «Бесплатный тестовый период»? Если нет – срочно добавьте.</div>
+                <span class="cta-hint">Мы сами даём гарантию окупаемости рекламы — и поможем сформулировать вашу.</span>
+            </div>
+        </div>
+
+        <!-- Финальный блок -->
+        <div class="footer-note">
+            <h3>Нашли у себя пару пунктов?</h3>
+            <p>Не переживайте — 90% сайтов имеют эти проблемы. Мы исправляем их каждый день.<br>Просто позвоните или напишите, и завтра ваш сайт начнёт работать по-новому.</p>
+            <a href="tel:+79957886668" class="phone-number">📞 +7-995-788-66-68</a>
+            <div class="sub-contact">
+                <p>Банановое агентство 817<br>pstudio817@yandex.ru<br>vk.com/studio817</p>
+            </div>
+            <p style="margin-top:15px; font-size:0.9rem; color:#F0A800;">🍌 С нами ваш сайт начнёт приносить заявки 24/7</p>
+        </div>
+    </div>
+</body>
+</html>
