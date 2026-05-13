@@ -109,31 +109,31 @@ function initMain() {
     });
   }
 
-  // Видео кота при наведении
-// Видео при наведении (плавное)
-document.querySelectorAll('[data-video-hover]').forEach(el => {
-  const img = el.querySelector('img');
-  const video = document.createElement('video');
-  video.src = el.dataset.videoHover;
-  video.muted = true;
-  video.loop = true;
-  video.playsInline = true;
-  video.preload = 'auto';  // предзагрузка
-  video.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:inherit;';
-  el.style.position = 'relative';
-  el.appendChild(video);
+  // Видео при наведении (плавное, без дёрганий)
+  document.querySelectorAll('[data-video-hover]').forEach(el => {
+    const img = el.querySelector('img');
+    const video = document.createElement('video');
+    video.src = el.dataset.videoHover;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:inherit;';
+    el.style.position = 'relative';
+    el.appendChild(video);
 
-  el.addEventListener('mouseenter', () => {
-    img.style.transition = 'opacity 0.3s';
-    img.style.opacity = '0';
-    video.style.display = 'block';
-    video.play().catch(() => {});
+    el.addEventListener('mouseenter', () => {
+      img.style.transition = 'opacity 0.3s';
+      img.style.opacity = '0';
+      video.style.display = 'block';
+      video.play().catch(() => {});
+    });
+    el.addEventListener('mouseleave', () => {
+      video.pause();
+      video.style.display = 'none';
+      img.style.opacity = '1';
+    });
   });
-  el.addEventListener('mouseleave', () => {
-    video.pause();
-    video.style.display = 'none';
-    img.style.opacity = '1';
-  });
-});
+}
 
 initComponents();
