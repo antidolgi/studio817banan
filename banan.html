@@ -194,19 +194,21 @@
     </section>
 
     <!-- Кот Сириус — фишка -->
-    <section class="section" style="background: #fff3cd; text-align: center;">
-        <div class="container">
-            <img src="images/sirius-attack.jpg" alt="Кот Сириус контролирует дедлайн" style="width: 250px; border-radius: 50%; margin-bottom: 1.5rem; border: 5px solid var(--accent);">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; color: var(--heading);">Опция «Надзор Сириуса»</h2>
-            <p style="font-size: 1.3rem; max-width: 600px; margin: 0 auto 2rem; color: var(--text);">
-                Наш секретный сотрудник — кот Сириус. Он лично следит, чтобы проект не затягивался. Если программист медлит — кусает за пятки.
-            </p>
-            <p style="font-size: 1.1rem; font-weight: bold; margin-bottom: 1.5rem;">
-                +1000 ₽ к стоимости заказа, но проект сдаётся <span style="color: var(--accent);">в 2 раза быстрее</span>. Шутка? Возможно. Но дедлайны мы соблюдаем железно.
-            </p>
-            <a href="#lead-magnet" class="btn btn--primary" style="font-size: 1.2rem;">Хочу с Сириусом 🐾</a>
-        </div>
-    </section>
+<section class="section" style="background: #fff3cd;">
+  <div class="container" style="max-width: 900px;">
+    <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+      <!-- Фото/видео кота с анимацией при наведении -->
+      <div data-video-hover="video/sirius-attack.mp4" style="flex: 0 0 280px; cursor: pointer;">
+        <img src="images/sirius-attack.jpg" alt="Кот Сириус" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-family: var(--font-heading); font-size: 2.8rem; color: var(--heading); margin-bottom: 1rem;">🐾 Надзор Сириуса</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Наш тайный сотрудник — кот Сириус. Он лично следит, чтобы проект не затягивался. Если программист медлит — кусает за пятки. <br><strong>+1000 ₽</strong> к заказу, но проект сдаётся <span style="color: var(--accent);">в 2 раза быстрее</span>. Шутка? Возможно.— зато дедлайны горят, а вы получаете фотоотчёты с пушистым контролёром.</p>
+        <a href="#lead-magnet" class="btn btn--primary" id="siriusBtn" style="background: var(--blue);">Хочу с Сириусом 🐾</a>
+      </div>
+    </div>
+  </div>
+</section
 
     <!-- Кейс + ROI -->
     <section class="section" style="background: var(--blue); color: #fff;">
@@ -267,31 +269,34 @@
         <div class="container" style="max-width: 700px; text-align: center;">
             <h2 class="section-title" style="color: #fff;">Скачайте чек-лист «10 ошибок сайта, убивающих продажи»</h2>
             <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255,255,255,0.85);">Оставьте заявку и получите чек-лист + персональный план продвижения на месяц.</p>
-
-            <form id="agencyForm" action="https://formspree.io/f/meevzaow" method="POST" style="background: #fff; padding: 2.5rem; border-radius: 32px; color: var(--text); text-align: left;">
-                <input type="hidden" name="form_type" value="agency_lead">
-                <input type="text" name="name" placeholder="Ваше имя" required style="margin-bottom: 1rem;">
-                <input type="tel" name="phone" placeholder="Телефон" required style="margin-bottom: 1rem;">
-                <input type="email" name="email" placeholder="Email (куда прислать чек-лист)" required style="margin-bottom: 1rem;">
-                <select name="service" style="margin-bottom: 1rem;">
-                    <option value="">Что вас интересует?</option>
-                    <option value="site">Создание сайта</option>
-                    <option value="seo">SEO-продвижение</option>
-                    <option value="ads">Контекстная реклама</option>
-                    <option value="bots">Автоматизация / боты</option>
-                    <option value="design">Дизайн</option>
-                    <option value="other">Другое</option>
-                </select>
-                <textarea name="message" placeholder="Расскажите кратко о задаче или текущем сайте" rows="3"></textarea>
-                <div class="captcha" style="margin: 1rem 0;">
-                    <label>Сколько будет 2 + 3? (цифрой)</label>
-                    <input type="text" name="captcha" required pattern="5">
-                </div>
-                <label class="checkbox" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
-                    <input type="checkbox" name="agree" required> Я согласен с политикой конфиденциальности
-                </label>
-                <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 1.5rem; font-size: 1.1rem;">Получить чек-лист и план</button>
-            </form>
+<form id="agencyForm" action="https://formspree.io/f/meevzaow" method="POST" style="background: #fff; padding: 2.5rem; border-radius: 32px; color: var(--text); text-align: left;">
+  <input type="hidden" name="form_type" value="agency_lead">
+  <input type="text" name="name" placeholder="Ваше имя" required style="margin-bottom: 1rem;">
+  <input type="tel" name="phone" placeholder="Телефон" required style="margin-bottom: 1rem;">
+  <input type="email" name="email" placeholder="Email (куда прислать чек-лист)" required style="margin-bottom: 1rem;">
+  <select name="service" style="margin-bottom: 1rem;">
+    <option value="">Что вас интересует?</option>
+    <option value="site">Создание сайта</option>
+    <option value="seo">SEO-продвижение</option>
+    <option value="ads">Контекстная реклама</option>
+    <option value="bots">Автоматизация / боты</option>
+    <option value="design">Дизайн</option>
+    <option value="other">Другое</option>
+  </select>
+  <textarea name="message" placeholder="Расскажите кратко о задаче" rows="3"></textarea>
+  <!-- Чекбокс Сириуса -->
+  <label class="checkbox" style="margin-top: 1rem; font-weight: 600;">
+    <input type="checkbox" name="sirius" value="yes" id="siriusCheckbox"> 🐾 Хочу, чтобы Сириус следил за дедлайнами (+1000 ₽)
+  </label>
+  <div class="captcha" style="margin: 1rem 0;">
+    <label>Сколько будет 2 + 3? (цифрой)</label>
+    <input type="text" name="captcha" required pattern="5" style="width:80px;">
+  </div>
+  <label class="checkbox">
+    <input type="checkbox" name="agree" required> Я согласен с <a href="privacy.html" target="_blank" style="color: var(--accent); text-decoration: underline; font-weight: bold;">политикой конфиденциальности</a>
+  </label>
+  <button type="submit" class="btn btn--primary" style="width: 100%; margin-top: 1.5rem; font-size: 1.1rem;">Получить чек-лист и план</button>
+</form>
         </div>
     </section>
 
@@ -325,6 +330,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
+<script>
+  document.getElementById('siriusBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('siriusCheckbox').checked = true;
+    document.getElementById('lead-magnet').scrollIntoView({ behavior: 'smooth' });
+    // небольшая задержка для скролла
+    setTimeout(() => document.querySelector('#agencyForm input[name="name"]').focus(), 600);
+  });
+</script>
 </body>
 </html>
