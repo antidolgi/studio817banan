@@ -1,1 +1,12 @@
-
+:root {
+  --bg: #FCFAF7;
+  --bg-secondary: #ffffff;
+  --text: #2B2B28;
+  --text-secondary: #5B5B57;
+  --heading: #1E1E1C;
+  --accent: #C7956D;
+  --accent-light: #D1A685;
+  --accent-shadow: rgba(199,149,109,0.4);
+  --blue: #3A5A78;
+}
+body { color: var(--text); }
