@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👨‍💼 ДОСТУП НАЧАЛЬНИКА - УДАЛЁННЫЙ ПРОСМОТР</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --accent: #38bdf8; --warn: #f59e0b; --success: #22c55e; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 16px; max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; color: var(--accent); margin: 16px 0; font-size: 1.8rem; }
+        h2 { color: var(--accent); border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 24px 0 12px; }
+        h3 { color: #cbd5e1; margin: 20px 0 10px; }
+        .card { background: var(--card); padding: 16px; border-radius: 12px; margin: 12px 0; border: 1px solid #334155; }
+        .warn { background: rgba(245,158,11,0.15); border-left: 4px solid var(--warn); padding: 12px; margin: 12px 0; }
+        .success { background: rgba(34,197,94,0.15); border-left: 4px solid var(--success); padding: 12px; margin: 12px 0; }
+        .step { display: flex; gap: 12px; margin: 12px 0; }
+        .step-num { background: var(--accent); color: #0f172a; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        code { background: #0f172a; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--warn); }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+        th, td { border: 1px solid #334155; padding: 8px; text-align: left; }
+        th { background: #0f172a; color: var(--accent); }
+        @media print { body { background: #fff; color: #000; } .card { border: 1px solid #ccc; background: #fff; } }
+    </style>
+</head>
+<body>
+
+<h1>👨‍💼 УДАЛЁННЫЙ ДОСТУП ДЛЯ НАЧАЛЬНИКА</h1>
+<div style="text-align:center;color:#94a3b8;margin-bottom:20px">Просмотр камер + запись на ПК/сервер</div>
+
+<div class="success">✅ Что уже сделано монтажником:<br>• Все 8 камер настроены и работают<br>• Включён облачный доступ (P2P)<br>• QR-код и серийный номер записаны</div>
+
+<h2>📱 ВАРИАНТ 1: ПРОСМОТР С ТЕЛЕФОНА/ПЛАНШЕТА</h2>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Скачай приложение</strong><br>• iPhone: App Store → <strong>DMSS</strong><br>• Android: Google Play → <strong>DMSS</strong></div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Зарегистрируйся</strong><br>• Открой DMSS → нажми <code>Регистрация</code><br>• Введи телефон или email → подтверди код</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Добавь объект</strong><br>• Нажми <code>+</code> (Добавить устройство)<br>• Выбери <code>Сканировать QR-код</code><br>• Отсканируй QR-код, который прислал монтажник (или введи серийный номер вручную)<br>• Имя: <code>[Название объекта]</code><br>• Пароль: <code>[пароль админа NVR]</code> (спроси у монтажника)</div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content"><strong>Смотри камеры</strong><br>• В главном экране появятся все 8 камер<br>• Нажми на любую — пойдёт живое видео<br>• Свайп влево/вправо — переключение камер</div></div>
+
+<h3>🎬 Запись на телефон (опционально)</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">В режиме просмотра нажми <code>⋮</code> (меню) → <code>Запись</code><br>• Видео сохранится в галерею телефона</div></div>
+
+<h2>💻 ВАРИАНТ 2: ПРОСМОТР + ЗАПИСЬ НА ПК / СЕРВЕР</h2>
+
+<div class="warn">💡 Этот способ позволяет вести непрерывную запись на жёсткий диск компьютера или сервера.</div>
+
+<h3>Шаг 1: Скачай SmartPSS Lite</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Официальная ссылка:</strong><br><a href="https://www.dahuasecurity.com/support/download" style="color:var(--accent)">www.dahuasecurity.com/support/download</a><br>• Найди раздел <strong>Software</strong> → <strong>SmartPSS Lite</strong><br>• Скачай версию для Windows (или Mac)</div></div>
+
+<h3>Шаг 2: Установи и запусти</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">• Запусти установщик → следуй инструкциям<br>• При первом запуске создай локального пользователя (запомни пароль)</div></div>
+
+<h3>Шаг 3: Добавь устройство</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Способ А: Через P2P (проще, не нужен белый IP)</strong><br>• В главном окне нажми <code>Devices</code> → <code>Add</code><br>• Метод добавления: <code>SN / P2P</code><br>• Введи:<br><code>SN: [серийный номер от монтажника]</code><br><code>Имя: [любое]</code><br><code>Логин: admin</code><br><code>Пароль: [пароль админа NVR]</code><br>• Нажми <code>Add</code> → статус должен стать <code>✅ Online</code></div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Способ Б: Через прямой IP (если есть белый IP или доступ в локальную сеть)</strong><br>• Метод добавления: <code>IP/Domain</code><br>• Введи:<br><code>IP: [внешний IP объекта или локальный 192.168.1.10]</code><br><code>Порт: 37777</code><br><code>Логин/пароль: как выше</code></div></div>
+
+<h3>Шаг 4: Просмотр в реальном времени</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">• Перейди во вкладку <code>Live View</code><br>• Слева — список устройств, раскрой свой объект → появятся 8 камер<br>• Перетащи камеры на сетку экрана (1/4/9/16 окон)<br>• Двойной клик — полноэкранный режим</div></div>
+
+<h3>Шаг 5: Настройка записи на ПК</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Настрой хранилище:</strong><br>• Меню (шестерёнка) → <code>Storage</code><br>• Выбери диск для записи (должен быть отформатирован в NTFS)<br>• Нажми <code>Format</code> (если требуется)</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Включи запись:</strong><br>• Меню → <code>Record</code><br>• Выбери устройство → каналы (или <code>[All]</code>)<br>• Режим записи: <br>&nbsp;&nbsp;• <code>Continuous</code> — непрерывная запись (требует много места)<br>&nbsp;&nbsp;• <code>Motion Detection</code> — только при движении (экономит 70-90% места)<br>• Расписание: <code>24/7</code> или настрой по дням/часам<br>• ☑ Включи <code>Overwrite</code> (перезапись при заполнении)<br>• Нажми <code>Apply</code></div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Проверь запись:</strong><br>• Подожди 5-10 минут → зайди в <code>Playback</code><br>• Выбери дату/канал → нажми <code>Search</code><br>• Если запись есть — на временной шкале появятся синие сегменты</div></div>
+
+<h3>Шаг 6: Экспорт записи (если нужно)</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">• Вкладка <code>Playback</code> → выбери камеру, дату, время<br>• Нажми <code>Export</code><br>• Выбери формат: <code>MP4</code> (универсальный) или <code>DAV</code> (родной Dahua)<br>• Укажи папку для сохранения → <code>Start</code></div></div>
+
+<h2>⚙️ ДОПОЛНИТЕЛЬНЫЕ ВОЗМОЖНОСТИ SMARTPSS</h2>
+
+<table>
+<tr><th>Функция</th><th>Как включить</th><th>Зачем нужно</th></tr>
+<tr><td>Уведомления о движении</td><td><code>Event Center</code> → настрой push/email</td><td>Получать оповещения на телефон/почту</td></tr>
+<tr><td>Поворот камер (если есть PTZ)</td><td>В Live View нажми на камеру → панель управления</td><td>Управлять поворотом/зумом удалённо</td></tr>
+<tr><td>Двухфакторная аутентификация</td><td>Меню → <code>Account</code> → <code>2FA</code></td><td>Защита от взлома</td></tr>
+<tr><td>Резервное копирование настроек</td><td><code>System</code> → <code>Backup</code></td><td>Сохранить конфигурацию на флешку</td></tr>
+</table>
+
+<h2>🔐 БЕЗОПАСНОСТЬ — ВАЖНО!</h2>
+
+<div class="warn">⚠️ Обязательно сделай это:</div>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Смени пароль по умолчанию</strong><br>• Пароль <code>12345</code> или <code>admin</code> — небезопасен!<br>• В NVR: Меню → <code>Account</code> → выбери <code>admin</code> → <code>Modify</code><br>• Задай сложный пароль (8+ символов, буквы+цифры)</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Запиши новые данные</strong><br>• Новый пароль админа:<br><code>_________________________</code><br>• Серийный номер NVR (SN):<br><code>_________________________</code><br>• QR-код: сохрани фото в облако/на флешку</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Проверь доступ</strong><br>• Попробуй зайти с телефона НЕ из локальной сети (отключи WiFi, включи мобильный интернет)<br>• Если видео идёт — настройка удалённого доступа работает</div></div>
+
+<h2>🆯 ЕСЛИ ЧТО-ТО НЕ РАБОТАЕТ</h2>
+
+<table>
+<tr><th>Проблема</th><th>Возможная причина</th><th>Решение</th></tr>
+<tr><td>Камеры не добавляются в SmartPSS</td><td>Неверный SN или пароль</td><td>Проверь данные у монтажника; сбрось NVR кнопкой Reset (10 сек)</td></tr>
+<tr><td>Статус <code>Offline</code></td><td>Нет интернета на объекте</td><td>Проверь, подключён ли роутер к провайдеру</td></tr>
+<tr><td>Видео тормозит</td><td>Низкая скорость интернета</td><td>В настройках камеры снизь битрейт или разрешение</td></tr>
+<tr><td>Не идёт запись на ПК</td><td>Диск не отформатирован / нет места</td><td>Проверь <code>Storage</code> → выбери диск → <code>Format</code></td></tr>
+<tr><td>Не открывается экспорт</td><td>Не установлен плагин</td><td>Скачай <code>WebComponents</code> с сайта Dahua</td></tr>
+</table>
+
+<h2>📞 КОНТАКТЫ ПОДДЕРЖКИ</h2>
+<div class="card">
+<strong>Dahua Russia:</strong><br>
+• Телефон: +7 (495) 228-10-10<br>
+• Email: support.ru@dahuasecurity.com<br>
+• Сайт: <a href="https://www.dahuasecurity.com/ru" style="color:var(--accent)">www.dahuasecurity.com/ru</a><br><br>
+<strong>При обращении укажи:</strong><br>
+• Модель NVR: <code>DHI-NVR1108HS-S3/H</code><br>
+• Серийный номер: <code>[из записи]</code><br>
+• Версию прошивки: Меню → <code>Info</code> → <code>Version</code>
+</div>
+
+<div style="text-align:center;margin-top:32px;padding:16px;background:#1e293b;border-radius:8px">
+<strong>© 2026 | Инструкция для Радмира</strong><br>
+<em>Сохраните этот файл и передайте ответственному лицу (пароль Vologda2026! от Dahua)</em>
+</div>
+
+</body>
+</html>
