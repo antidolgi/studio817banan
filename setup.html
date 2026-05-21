@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 НАСТРОЙКА CCTV - ПОЛНЫЙ ГАЙД</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --accent: #38bdf8; --warn: #f59e0b; --danger: #ef4444; --success: #22c55e; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 16px; max-width: 900px; margin: 0 auto; }
+        h1 { text-align: center; color: var(--accent); margin: 16px 0; font-size: 1.8rem; }
+        h2 { color: var(--accent); border-bottom: 2px solid #334155; padding-bottom: 8px; margin: 24px 0 12px; }
+        h3 { color: #cbd5e1; margin: 20px 0 10px; }
+        .card { background: var(--card); padding: 16px; border-radius: 12px; margin: 12px 0; border: 1px solid #334155; }
+        .warn { background: rgba(245,158,11,0.15); border-left: 4px solid var(--warn); padding: 12px; margin: 12px 0; }
+        .danger { background: rgba(239,68,68,0.15); border-left: 4px solid var(--danger); padding: 12px; margin: 12px 0; }
+        .success { background: rgba(34,197,94,0.15); border-left: 4px solid var(--success); padding: 12px; margin: 12px 0; }
+        .step { display: flex; gap: 12px; margin: 12px 0; }
+        .step-num { background: var(--accent); color: #0f172a; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        code { background: #0f172a; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: var(--warn); }
+        pre { background: #0f172a; padding: 12px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+        th, td { border: 1px solid #334155; padding: 8px; text-align: left; }
+        th { background: #0f172a; color: var(--accent); }
+        .tag { display: inline-block; background: var(--warn); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 2px 4px; }
+        @media print { body { background: #fff; color: #000; } .card { border: 1px solid #ccc; background: #fff; } }
+    </style>
+</head>
+<body>
+
+<h1>🔧 НАСТРОЙКА CCTV - ПОЛНЫЙ ГАЙД</h1>
+<div style="text-align:center;color:#94a3b8;margin-bottom:20px">Dahua NVR + 8 камер ST-VK2513 | Работает офлайн</div>
+
+<div class="danger">⚠️ ПЕРЕД НАЧАЛОМ:<br>• Отключи правую ветку, работай только с левой (или наоборот)<br>• Не лезь на столбы — всё настраивается с ноутбука/монитора</div>
+
+<h2>📋 ЧАСТЬ 1: ПОДГОТОВКА</h2>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Подключи монитор к NVR (опционально, но удобно)</strong><br>• HDMI или VGA кабель от NVR → в монитор<br>• USB-мышь в NVR<br>• Питание NVR в розетку → включи</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Проверь питание камер</strong><br>• Убедись, что PoE-коммутатор включен в розетку<br>• Все кабели от камер вставлены в порты коммутатора</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Скачай софт на ноутбук (если нет монитора)</strong><br>• <a href="https://www.dahuasecurity.com/support/download" style="color:var(--accent)">Dahua ConfigTool</a><br>• <a href="https://sourceforge.net/projects/onvifdm/" style="color:var(--accent)">ONVIF Device Manager</a> (универсальный)</div></div>
+
+<h2>🔌 ЧАСТЬ 2: УСТРАНЕНИЕ КОНФЛИКТА IP</h2>
+
+<div class="warn">💡 Суть проблемы: все камеры имеют заводской IP <code>192.168.1.10</code>. Когда их несколько в сети → конфликт → камеры "прыгают" в списке.</div>
+
+<h3>Способ А: Через монитор (проще)</h3>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Зайди в меню NVR</strong><br>• На мониторе: клик правой кнопкой мыши → Меню → введи пароль (по умолчанию пусто или <code>admin</code>)</div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Найди камеры</strong><br>• Меню → <code>Camera</code> → <code>Register</code><br>• Нажми <code>Device Search</code><br>• Появятся камеры со статусом <code>Conflict</code> или <code>Offline</code></div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Смени IP камерам ВРУЧНУЮ</strong><br>• Выдели первую камеру → <code>Modify</code><br>• Впиши:<br><code>IP: 192.168.1.101</code><br><code>Mask: 255.255.255.0</code><br><code>Gateway: 192.168.1.1</code><br>• Протокол: <code>ONVIF</code><br>• Порт: <code>80</code> (если не работает → <code>8899</code>)<br>• Логин: <code>admin</code>, Пароль: <code>12345</code><br>• Нажми <code>OK</code></div></div>
+
+<div class="step"><div class="step-num">4</div><div class="step-content"><strong>Повтори для всех 8 камер</strong><br>Используй таблицу:</div></div>
+
+<table>
+<tr><th>Камера</th><th>Где</th><th>Новый IP</th><th>Порт NVR</th></tr>
+<tr><td>К1</td><td>Въезд левая</td><td><code>192.168.1.101</code></td><td>PoE-1</td></tr>
+<tr><td>К2</td><td>Въезд правая</td><td><code>192.168.1.102</code></td><td>PoE-2</td></tr>
+<tr><td>К3</td><td>Левый ближний</td><td><code>192.168.1.103</code></td><td>PoE-3</td></tr>
+<tr><td>К4</td><td>Правый ближний</td><td><code>192.168.1.104</code></td><td>PoE-4</td></tr>
+<tr><td>К7</td><td>Левая середина</td><td><code>192.168.1.105</code></td><td>PoE-5</td></tr>
+<tr><td>К5</td><td>Левый дальний</td><td><code>192.168.1.106</code></td><td>PoE-6</td></tr>
+<tr><td>К8</td><td>Правая середина</td><td><code>192.168.1.107</code></td><td>PoE-7</td></tr>
+<tr><td>К6</td><td>Правый дальний</td><td><code>192.168.1.108</code></td><td>PoE-8</td></tr>
+</table>
+
+<div class="step"><div class="step-num">5</div><div class="step-content"><strong>Проверь статус</strong><br>• После смены IP статус каждой камеры должен стать <code>✅ Online</code><br>• Если <code>Offline</code> → проверь обжим, питание, порт удлинителя</div></div>
+
+<h3>Способ Б: Через ноутбук (если нет монитора)</h3>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Настрой сеть ноутбука</strong><br>• Параметры → Сеть → Ethernet → Свойства адаптера<br>• IPv4 → Свойства → "Использовать следующий IP":<br><code>IP: 192.168.1.200</code><br><code>Mask: 255.255.255.0</code><br><code>Gateway: 192.168.1.1</code></div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Запусти ONVIF Device Manager</strong><br>• Программа найдёт камеры даже при конфликте<br>• Выдели камеру → вкладка <code>Network</code> → <code>Set IP</code><br>• Впиши новый IP из таблицы выше → <code>Apply</code><br>• Логин: <code>admin</code>, Пароль: <code>12345</code></div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Повтори для всех камер</strong><br>• После смены всех IP перезагрузи коммутатор (выдерни питание на 10 сек)</div></div>
+
+<h2>⚙️ ЧАСТЬ 3: ФИНАЛЬНАЯ НАСТРОЙКА NVR</h2>
+
+<h3>1. Форматирование диска</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">Меню → <code>Storage</code> → <code>HDD</code> → выбери диск → <code>Format</code> → дождись "Normal"</div></div>
+
+<h3>2. Настройка записи</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">Меню → <code>Storage</code> → <code>Record</code><br>• Канал: <code>[All]</code><br>• Режим: <code>Motion Detection</code> (экономит место)<br>• Расписание: <code>24/7</code><br>• ☑ <code>Overwrite</code> (перезапись при заполнении)<br>• <code>Apply</code></div></div>
+
+<h3>3. Настройка сети (интернет)</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">Меню → <code>Network</code> → <code>TCP/IP</code><br>• Тип: <code>Static</code><br>• IP: <code>192.168.1.10</code> (если не конфликтует с роутером)<br>• Mask: <code>255.255.255.0</code><br>• Gateway: IP твоего роутера (обычно <code>192.168.1.1</code>)<br>• DNS: <code>8.8.8.8</code><br>• <code>Apply</code></div></div>
+
+<h3>4. Включение P2P (облачный доступ)</h3>
+<div class="step"><div class="step-num">1</div><div class="step-content">Меню → <code>Network</code> → <code>P2P</code> (или <code>Cloud</code>)<br>• ☑ Включи галочку <code>Enable P2P</code><br>• Подожди 1-2 минуты → статус должен стать <code>✅ Online</code><br>• <strong>СФОТОГРАФИРУЙ QR-код!</strong><br>• <strong>ЗАПИШИ серийный номер (SN)!</strong></div></div>
+
+<div class="success">✅ ГОТОВО! Теперь система работает и доступна удалённо.</div>
+
+<h2>📱 ЧАСТЬ 4: ПРОВЕРКА С ТЕЛЕФОНА</h2>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><strong>Скачай DMSS</strong><br>• iPhone: App Store → <code>DMSS</code><br>• Android: Google Play → <code>DMSS</code></div></div>
+
+<div class="step"><div class="step-num">2</div><div class="step-content"><strong>Добавь устройство</strong><br>• Открой DMSS → зарегистрируйся → нажми <code>+</code><br>• Выбери <code>Scan QR Code</code> → отсканируй QR с экрана NVR<br>• Имя: <code>[Название объекта]</code><br>• Пароль: твой пароль админа NVR</div></div>
+
+<div class="step"><div class="step-num">3</div><div class="step-content"><strong>Проверь</strong><br>• Должны появиться все 8 камер<br>• Нажми на любую — должно пойти видео</div></div>
+
+<h2>✅ ФИНАЛЬНЫЙ ЧЕК-ЛИСТ</h2>
+<ul style="list-style:none;padding:0">
+<li>☐ Все 8 камер в статусе <code>Online ✅</code></li>
+<li>☐ У каждой камеры уникальный IP (101-108)</li>
+<li>☐ HDD отформатирован, запись включена</li>
+<li>☐ P2P статус: <code>Online</code></li>
+<li>☐ QR-код сфотографирован, серийник записан</li>
+<li>☐ DMSS настроен, видео идёт с телефона</li>
+</ul>
+
+<div class="warn" style="margin-top:24px">💡 Если камера не подключается:<br>• Проверь протокол: должен быть <code>ONVIF</code><br>• Попробуй порт <code>8899</code> вместо <code>80</code><br>• Сбрось камеру кнопкой Reset (10 сек) → настрой заново</div>
+
+<div style="text-align:center;margin-top:32px;padding:16px;background:#1e293b;border-radius:8px">
+<strong>© 2026 | Сохрани этот файл (Ctrl+S)</strong><br>
+<em>Работает без интернета — бери с собой на объект</em>
+</div>
+
+</body>
+</html>
