@@ -217,30 +217,16 @@
             color: #065f46;
         }
         
-        .button {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
+        .info {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 10px 5px;
-            transition: all 0.3s;
+            margin: 20px 0;
         }
         
-        .button:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-        
-        .button.secondary {
-            background: #6b7280;
-        }
-        
-        .button.secondary:hover {
-            background: #4b5563;
+        .info p {
+            color: #1e40af;
         }
         
         @media (max-width: 600px) {
@@ -268,7 +254,7 @@
             <div class="agency-info">
                 <h3>🍌 Банановое Агенство 817</h3>
                 <p>Создание сайтов, автоматизация, приложения, боты, реклама</p>
-                <p>Подробнее: <a href="https://studio817.ru/banan" style="color: #fcd34d;">studio817.ru/banan</a></p>
+                <p>Подробнее: studio817.ru/banan</p>
                 <a href="tel:89957886668" class="phone">📞 8-995-788-66-68</a>
             </div>
         </div>
@@ -286,11 +272,18 @@
             
             <div class="step">
                 <h3>1️⃣ Скачайте приложение DMSS</h3>
-                <p><strong>Для iPhone (iOS):</strong></p>
-                <a href="https://apps.apple.com/ru/app/dmss/id1446915610" class="button" target="_blank">Скачать в App Store</a>
-                
-                <p style="margin-top: 15px;"><strong>Для Android:</strong></p>
-                <a href="https://play.google.com/store/apps/details?id=com.mm.android.direct.livesee" class="button" target="_blank">Скачать в Google Play</a>
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <img src="images/qrmob.png" alt="QR код для скачивания DMSS">
+                        <div class="qr-label">Отсканируйте для скачивания</div>
+                    </div>
+                </div>
+                <p><strong>Или найдите в магазине приложений:</strong></p>
+                <ul>
+                    <li><strong>iPhone:</strong> App Store → введите <strong>DMSS</strong></li>
+                    <li><strong>Android:</strong> Google Play → введите <strong>DMSS</strong></li>
+                </ul>
+                <p style="font-size: 14px; color: #6b7280;"><em>💡 Если QR-код не работает, просто найдите приложение по названию "DMSS"</em></p>
             </div>
             
             <div class="step">
@@ -305,21 +298,28 @@
                 </ul>
             </div>
             
+            <div class="info">
+                <p><strong>📧 После регистрации:</strong><br>
+                Отправьте мне email или телефон, на который зарегистрировали аккаунт.<br>
+                Я добавлю вас в систему и предоставлю доступ к камерам.</p>
+            </div>
+            
             <div class="step">
                 <h3>3️⃣ Добавьте устройство</h3>
-                <p><strong>Способ 1: Отсканируйте QR-код</strong></p>
+                <p>После того как я предоставлю доступ, вы получите уведомление в приложении. Просто примите его!</p>
+                
+                <p style="margin-top: 15px;"><strong>Или добавьте вручную:</strong></p>
                 <div class="qr-section">
                     <div class="qr-code">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF8WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5nhKPNAAAHlElEQVR4nO3dW3LbMBBFUXr/m3Y+MhNHJkECuHc9fMqWKJE4uAiKcvv6+voH/NGf1QOAdxMIBASCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgCBAIAgSCAIEgQCAIEAgCBIIAgSBAIAgQCAIEggCBIEAgC......" alt="QR Code для мобильного доступа">
-                        <div class="qr-label">Отсканируйте в приложении DMSS</div>
+                        <img src="images/qrsn.png" alt="QR код с серийным номером">
+                        <div class="qr-label">Серийный номер устройства</div>
                     </div>
                 </div>
                 
-                <p style="margin-top: 15px;"><strong>Способ 2: Введите вручную</strong></p>
                 <ul>
                     <li>В DMSS нажмите <strong>"+"</strong></li>
                     <li>Выберите <strong>"P2P / SN"</strong></li>
-                    <li>Введите серийный номер: <code>BK0AA00PAJ210C9</code></li>
+                    <li>Отсканируйте QR-код выше или введите вручную: <code>BK0AA00PAJ210C9</code></li>
                     <li>Имя: <strong>Объект</strong></li>
                     <li>Логин: <strong>admin</strong></li>
                     <li>Пароль: <strong>Vologda2026!</strong></li>
@@ -348,6 +348,7 @@
                 <p><strong>⚠️ Если не получается:</strong></p>
                 <ul>
                     <li>Убедитесь, что выбрали регион <strong>РОССИЯ</strong> при регистрации</li>
+                    <li>Отправьте мне ваш email/телефон для предоставления доступа</li>
                     <li>Проверьте интернет-соединение на телефоне</li>
                     <li>Если проблема остается — позвоните нам: 8-995-788-66-68</li>
                 </ul>
@@ -391,7 +392,6 @@
                     <li>Экспорт записей</li>
                     <li>Удаленное управление</li>
                 </ul>
-                <a href="https://www.dahuasecurity.com/support/download" class="button" target="_blank">Скачать SmartPSS Lite</a>
             </div>
             
             <div class="success">
